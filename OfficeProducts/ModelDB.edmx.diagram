@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="03ad9dfb1cf04f22be9bf2efd6f73a9e" Name="Diagram1">
+        <EntityTypeShape EntityType="practic19Model.CategoryProduct" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="practic19Model.City" Width="1.5" PointX="1.5" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="practic19Model.Logined" Width="1.5" PointX="1.5" PointY="28.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="practic19Model.ManufacturerProduct" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="practic19Model.Order" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="practic19Model.OrderProduct" Width="1.5" PointX="5.25" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="practic19Model.OrderStatus" Width="1.5" PointX="0.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="practic19Model.PickPoint" Width="1.5" PointX="0.75" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="practic19Model.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="practic19Model.Role" Width="1.5" PointX="1.5" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="practic19Model.StreetPoint" Width="1.5" PointX="1.5" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="practic19Model.SupplierProduct" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="practic19Model.UnitOfMeasurement" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="practic19Model.User" Width="1.5" PointX="0.75" PointY="25.5" IsExpanded="true" />
+        <AssociationConnector Association="practic19Model.FK__Product__Product__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="practic19Model.FK_StreetPoint_City" ManuallyRouted="false" />
+        <AssociationConnector Association="practic19Model.FK__Logined__UserRol__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="practic19Model.FK_User_Logined" ManuallyRouted="false" />
+        <AssociationConnector Association="practic19Model.FK__Product__Product__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="practic19Model.FK__Order__OrderStat__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="practic19Model.FK__Order__UserID__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="practic19Model.FK__OrderProd__Order__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="practic19Model.FK_Order_PickPoint" ManuallyRouted="false" />
+        <AssociationConnector Association="practic19Model.FK__OrderProd__Produ__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="practic19Model.FK_PickPoint_StreetPoint" ManuallyRouted="false" />
+        <AssociationConnector Association="practic19Model.FK__Product__Product__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="practic19Model.FK__Product__Product__52593CB8" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
