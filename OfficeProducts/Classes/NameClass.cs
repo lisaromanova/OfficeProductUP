@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace OfficeProducts.Classes
 {
@@ -11,7 +12,7 @@ namespace OfficeProducts.Classes
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        string name = "A";
+        string name = "";
         public string Name
         {
             get => name;
@@ -19,6 +20,17 @@ namespace OfficeProducts.Classes
             {
                 name = value;
                 PropertyChanged(this, new PropertyChangedEventArgs("Name"));
+            }
+        }
+
+        Visibility btnVisible = Visibility.Hidden;
+        public Visibility ButtonVisible
+        {
+            get => btnVisible;
+            set
+            {
+                btnVisible = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("ButtonVisible"));
             }
         }
     }

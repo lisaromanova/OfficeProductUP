@@ -115,6 +115,7 @@ namespace OfficeProducts.Pages
                         if (user != null)
                         {
                             name.Name = user.User.UserSurname + " "+user.User.UserName + " " + user.User.UserPatronymic;
+                            name.ButtonVisible = Visibility.Visible;
                             Classes.FrameClass.frmMain.Navigate(new ProductListPage());
                         }
                         else
@@ -130,6 +131,7 @@ namespace OfficeProducts.Pages
                         if (user != null && tbCaptcha.Text == str)
                         {
                             name.Name = user.User.UserSurname + " " + user.User.UserName + " " + user.User.UserPatronymic;
+                            name.ButtonVisible = Visibility.Visible;
                             Classes.FrameClass.frmMain.Navigate(new ProductListPage());
                         }
                         else
@@ -164,6 +166,7 @@ namespace OfficeProducts.Pages
         private void btnEnterGuest_Click(object sender, RoutedEventArgs e)
         {
             name.Name = "Гость";
+            name.ButtonVisible = Visibility.Visible;
             Classes.FrameClass.frmMain.Navigate(new ProductListPage());
         }
     }

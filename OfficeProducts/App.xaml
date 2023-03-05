@@ -10,6 +10,10 @@
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Foreground" Value="#FF498C51"/>
         </Style>
+        <Style TargetType="TextBlock" x:Key="TextBlockBase">
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
         <Style TargetType="GroupBox" x:Key="GroupBoxStyle">
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
             <Setter Property="FontSize" Value="17"/>

@@ -9,24 +9,29 @@
       Title="ProductListPage">
 
     <Grid>
+        <TextBlock Name="tbEmpty" Text="Записи не найдены" FontSize="40" FontFamily="Comic Sans MS" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Collapsed"/>
         <ListView HorizontalContentAlignment="Stretch" Name="lstProduct" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Border BorderBrush="Black" BorderThickness="1">
-                        <Grid>
+                    <Border BorderBrush="Black" BorderThickness="1" Background="{Binding ColorProduct}">
+                        <Grid Margin="5" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="0.5*"/>
                             </Grid.ColumnDefinitions>
-                            <Image Width="150" Source="{Binding Photo}" Grid.Column="0"/>
-                            <StackPanel Grid.Column="1">
-                                <TextBlock FontWeight="Bold" Text="{Binding ProductName}"/>
-                                <TextBlock TextWrapping="Wrap" Text="{Binding ProductDescription}"/>
-                                <TextBlock Text="{Binding ManufacturerProduct.ManufacturerName, StringFormat=Производитель: {0}}"/>
-                                <TextBlock Text="{Binding ProductCost, StringFormat=Цена: {0}}"/>
+                            <Image Height="130" Source="{Binding Photo}" Grid.Column="0"/>
+                            <StackPanel VerticalAlignment="Center" Grid.Column="1">
+                                <TextBlock Style="{StaticResource TextBlockBase}" FontWeight="Bold" Text="{Binding ProductName}"/>
+                                <TextBlock Style="{StaticResource TextBlockBase}" TextWrapping="Wrap" Text="{Binding ProductDescription}"/>
+                                <TextBlock Style="{StaticResource TextBlockBase}" Text="{Binding ManufacturerProduct.ManufacturerName, StringFormat=Производитель: {0}}"/>
+                                <TextBlock Style="{StaticResource TextBlockBase}">
+                                    <Run Text="Цена: "/>
+                                    <Run Text="{Binding Cost, Mode=OneWay}" TextDecorations="{Binding OldCost}"/>
+                                    <Run Text="{Binding NewCost, Mode=OneWay}"/>
+                                </TextBlock>
                             </StackPanel>
-                            <TextBlock HorizontalAlignment="Center" Grid.Column="2" Text="{Binding ProductDiscountAmount}"/>
+                            <TextBlock VerticalAlignment="Center" Style="{StaticResource TextBlockBase}" HorizontalAlignment="Center" Grid.Column="2" Text="{Binding ProductDiscountMax}"/>
                         </Grid>
                     </Border>
                 </DataTemplate>

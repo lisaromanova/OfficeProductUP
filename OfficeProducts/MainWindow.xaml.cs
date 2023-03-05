@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace OfficeProducts
 {
@@ -20,14 +21,22 @@ namespace OfficeProducts
     /// </summary>
     public partial class MainWindow : Window
     {
+        Classes.NameClass name;
         public MainWindow()
         {
             InitializeComponent();
             Classes.DataBaseClass.connect = new DataBaseEntities();
             Classes.FrameClass.frmMain = frmMain;
-            Classes.NameClass name = new Classes.NameClass();
+            name = new Classes.NameClass();
             DataContext = name;
             Classes.FrameClass.frmMain.Navigate(new Pages.AuthorizationPage(name));
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            Classes.FrameClass.frmMain.Navigate(new Pages.AuthorizationPage(name));
+            name.Name = "";
+            name.ButtonVisible = Visibility.Hidden;
         }
     }
 }
