@@ -39,7 +39,22 @@ namespace OfficeProducts
                 }
                 else
                 {
-                    return "";
+                    return string.Empty;
+                }
+            }
+        }
+
+        public double CostSort
+        {
+            get
+            {
+                if (ProductDiscountAmount != null)
+                {
+                    return Convert.ToDouble(ProductCost) * Convert.ToDouble(1 - (ProductDiscountAmount / 100));
+                }
+                else
+                {
+                    return Convert.ToDouble(ProductCost);
                 }
             }
         }

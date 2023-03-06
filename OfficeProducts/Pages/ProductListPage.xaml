@@ -9,8 +9,46 @@
       Title="ProductListPage">
 
     <Grid>
-        <TextBlock Name="tbEmpty" Text="Записи не найдены" FontSize="40" FontFamily="Comic Sans MS" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Collapsed"/>
-        <ListView HorizontalContentAlignment="Stretch" Name="lstProduct" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="110"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <TextBlock Name="tbCount" Style="{StaticResource TextBlockBase}"/>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="0">
+                <GroupBox Width="250" Header="Сортировка" Style="{StaticResource GroupBoxStyle}">
+                    <ComboBox Margin="5" Name="cbSort" SelectionChanged="cbSort_SelectionChanged">
+                        <ComboBoxItem>
+                            По возрастанию стоимости
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            По убыванию стоимости
+                        </ComboBoxItem>
+                    </ComboBox>
+                </GroupBox>
+                <GroupBox Width="200" Header="Скидка" Style="{StaticResource GroupBoxStyle}">
+                    <ComboBox Margin="5" Name="cbDiscount" SelectionChanged="cbSort_SelectionChanged">
+                        <ComboBoxItem>
+                            Все диапазоны
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            От 0 - 9,99%
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            От 10 - 14,99%
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            15% и более
+                        </ComboBoxItem>
+                    </ComboBox>
+                </GroupBox>
+                <GroupBox Width="300" Header="Поиск по наименованию" Style="{StaticResource GroupBoxStyle}">
+                    <TextBox Margin="5" Name="tbSearch" TextChanged="tbSearch_TextChanged"/>
+                </GroupBox>
+            </StackPanel>
+        </StackPanel>
+        <TextBlock Name="tbEmpty" Text="Записи не найдены" FontSize="40" FontFamily="Comic Sans MS" VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="Collapsed" Margin="0,169,0,0" Grid.Row="1"/>
+        <ListView HorizontalContentAlignment="Stretch" Name="lstProduct" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="Black" BorderThickness="1" Background="{Binding ColorProduct}">
