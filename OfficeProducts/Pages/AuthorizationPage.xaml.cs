@@ -116,12 +116,16 @@ namespace OfficeProducts.Pages
                         {
                             name.Name = user.User.UserSurname + " "+user.User.UserName + " " + user.User.UserPatronymic;
                             name.ButtonVisible = Visibility.Visible;
-                            Classes.FrameClass.frmMain.Navigate(new ProductListPage());
+                            name.GetUserID = user.LoginedID;
+                            MessageBox.Show("Успешная авторизация!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                            Classes.FrameClass.frmMain.Navigate(new ProductListPage(name));
                         }
                         else
                         {
                             MessageBox.Show("Неверные данные", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                             Captcha();
+                            tbLogin.Text = string.Empty;
+                            pswPassword.Password = string.Empty;
                             stackCaptcha.Visibility = Visibility.Visible;
                             check = true;
                         }
@@ -131,8 +135,10 @@ namespace OfficeProducts.Pages
                         if (user != null && tbCaptcha.Text == str)
                         {
                             name.Name = user.User.UserSurname + " " + user.User.UserName + " " + user.User.UserPatronymic;
+                            name.GetUserID = user.LoginedID;
                             name.ButtonVisible = Visibility.Visible;
-                            Classes.FrameClass.frmMain.Navigate(new ProductListPage());
+                            MessageBox.Show("Успешная авторизация!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                            Classes.FrameClass.frmMain.Navigate(new ProductListPage(name));
                         }
                         else
                         {
@@ -168,7 +174,7 @@ namespace OfficeProducts.Pages
         {
             name.Name = "Гость";
             name.ButtonVisible = Visibility.Visible;
-            Classes.FrameClass.frmMain.Navigate(new ProductListPage());
+            Classes.FrameClass.frmMain.Navigate(new ProductListPage(name));
         }
     }
 }

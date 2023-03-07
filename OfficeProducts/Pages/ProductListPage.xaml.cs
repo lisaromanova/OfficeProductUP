@@ -21,13 +21,21 @@ namespace OfficeProducts.Pages
     public partial class ProductListPage : Page
     {
         int countList;
-        public ProductListPage()
+        Order order;
+        public ProductListPage(Classes.NameClass name)
         {
             InitializeComponent();
             List<Product> products = Classes.DataBaseClass.connect.Product.ToList();
             lstProduct.ItemsSource = products;
             countList = products.Count;
             tbCount.Text = products.Count.ToString() + " из " + countList.ToString();
+            order = new Order();
+            order.OrderStatus = 1;
+            order.OrderDate = DateTime.Now;
+            if(name.GetUserID != 0)
+            {
+                order.UserID = name.GetUserID;
+            }
         }
 
         void Filter()
@@ -88,11 +96,20 @@ namespace OfficeProducts.Pages
             Filter();
         }
 
+        List<OrderProduct> listOrder = new List<OrderProduct>();
+
         private void addToOrder_Click(object sender, RoutedEventArgs e)
         {
             MenuItem item = (MenuItem)sender;
-            int id = Convert.ToInt32(item.Tag);
-            MessageBox.Show(id.ToString());
+            string id = item.Uid.ToString();
+            btnViewOrder.Visibility = Visibility.Visible;
+            OrderProduct orderProduct = new OrderProduct()
+            {
+                OrderID = order.OrderID,
+                ProductArticleNumber = id,
+                Quantity = 1
+            };
+            listOrder.Add(orderProduct);
         }
     }
 }

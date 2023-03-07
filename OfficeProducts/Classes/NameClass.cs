@@ -23,6 +23,16 @@ namespace OfficeProducts.Classes
             }
         }
 
+        int id = 0;
+        public int GetUserID
+        {
+            get => id;
+            set
+            {
+                id = value;
+            }
+        }
+
         Visibility btnVisible = Visibility.Hidden;
         public Visibility ButtonVisible
         {

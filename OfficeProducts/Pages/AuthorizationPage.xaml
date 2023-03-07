@@ -9,26 +9,25 @@
       Title="AuthorizationPage">
 
     <Grid Margin="10">
-        <ScrollViewer>
-            <StackPanel Width="300" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock FontSize="24" HorizontalAlignment="Center" Text="Авторизация" Style="{StaticResource TextBlockHeader}"/>
-                <GroupBox  Style="{StaticResource GroupBoxStyle}" Header="Логин">
-                    <TextBox Margin="5" Name="tbLogin"/>
+
+        <StackPanel Width="300" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock FontSize="24" HorizontalAlignment="Center" Text="Авторизация" Style="{StaticResource TextBlockHeader}"/>
+            <GroupBox  Style="{StaticResource GroupBoxStyle}" Header="Логин">
+                <TextBox Margin="5" Name="tbLogin"/>
+            </GroupBox>
+            <GroupBox Style="{StaticResource GroupBoxStyle}" Header="Пароль">
+                <PasswordBox Margin="5" Name="pswPassword" PasswordChar="*"/>
+            </GroupBox>
+            <StackPanel Margin="5" Name="stackCaptcha" Visibility="Collapsed">
+                <Border Width="200" BorderThickness="1" BorderBrush="Black">
+                    <Canvas Name="canvasCaptcha" Width="200" Height="70"/>
+                </Border>
+                <GroupBox  Style="{StaticResource GroupBoxStyle}" Header="Введите Captcha">
+                    <TextBox Margin="5" Name="tbCaptcha"/>
                 </GroupBox>
-                <GroupBox Style="{StaticResource GroupBoxStyle}" Header="Пароль">
-                    <PasswordBox Margin="5" Name="pswPassword" PasswordChar="*"/>
-                </GroupBox>
-                <StackPanel Margin="5" Name="stackCaptcha" Visibility="Collapsed">
-                    <Border Width="200" BorderThickness="1" BorderBrush="Black">
-                        <Canvas Name="canvasCaptcha" Width="200" Height="70"/>
-                    </Border>
-                    <GroupBox  Style="{StaticResource GroupBoxStyle}" Header="Введите Captcha">
-                        <TextBox Margin="5" Name="tbCaptcha"/>
-                    </GroupBox>
-                </StackPanel>
-                <Button Name="btnEnter" Margin="10" Content="Войти" Style="{StaticResource ButtonTemplate}" Click="btnEnter_Click"/>
-                <Button Name="btnEnterGuest" Margin="10" Content="Войти как гость" Style="{StaticResource ButtonTemplate}" Click="btnEnterGuest_Click"/>
             </StackPanel>
-        </ScrollViewer>
+            <Button Name="btnEnter" Margin="10" Content="Войти" Style="{StaticResource ButtonTemplate}" Click="btnEnter_Click"/>
+            <Button Name="btnEnterGuest" Margin="10" Content="Войти как гость" Style="{StaticResource ButtonTemplate}" Click="btnEnterGuest_Click"/>
+        </StackPanel>
     </Grid>
 </Page>
