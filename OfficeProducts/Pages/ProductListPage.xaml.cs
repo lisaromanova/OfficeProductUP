@@ -27,6 +27,7 @@ namespace OfficeProducts.Pages
             List<Product> products = Classes.DataBaseClass.connect.Product.ToList();
             lstProduct.ItemsSource = products;
             countList = products.Count;
+            tbCount.Text = products.Count.ToString() + " из " + countList.ToString();
         }
 
         void Filter()
@@ -85,6 +86,13 @@ namespace OfficeProducts.Pages
         private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             Filter();
+        }
+
+        private void addToOrder_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItem item = (MenuItem)sender;
+            int id = Convert.ToInt32(item.Tag);
+            MessageBox.Show(id.ToString());
         }
     }
 }

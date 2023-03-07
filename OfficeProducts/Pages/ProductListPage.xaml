@@ -14,7 +14,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <StackPanel>
-            <TextBlock Name="tbCount" Style="{StaticResource TextBlockBase}"/>
+            <TextBlock Name="tbCount" HorizontalAlignment="Center" Style="{StaticResource TextBlockBase}"/>
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="0">
                 <GroupBox Width="250" Header="Сортировка" Style="{StaticResource GroupBoxStyle}">
                     <ComboBox Margin="5" Name="cbSort" SelectionChanged="cbSort_SelectionChanged">
@@ -74,6 +74,11 @@
                     </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Tag="{Binding ProductCategoryID}" Name="addToOrder" Header="Добавить к заказу" FontFamily="Comic Sans MS" FontSize="16" Click="addToOrder_Click"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
         </ListView>
     </Grid>
 </Page>

@@ -159,6 +159,7 @@ namespace OfficeProducts.Pages
             timer.Stop();
             canvasCaptcha.Children.Clear();
             Captcha();
+            tbCaptcha.Text = string.Empty;
             btnEnter.Visibility = Visibility.Visible;
             btnEnterGuest.Visibility = Visibility.Visible;
         }
