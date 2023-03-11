@@ -10,5 +10,6 @@ namespace OfficeProducts.Classes
     public class FrameClass
     {
         public static Frame frmMain;
+        public static Frame frmOrder;
     }
 }

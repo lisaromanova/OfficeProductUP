@@ -5,56 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OfficeProducts"
         mc:Ignorable="d"
-        Title="Формирование заказа" Icon="\Resources\icon.ico" Height="550" Width="800">
-    <Grid Margin="5">
+        Title="Заказ" Icon="\Resources\icon.ico" Height="600" MinHeight="600" MinWidth="800" Width="800">
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="70"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
-        <ListView HorizontalContentAlignment="Stretch" Name="lstProduct" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Border BorderBrush="Black" BorderThickness="1">
-                        <Grid Margin="5" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="0.5*"/>
-                            </Grid.ColumnDefinitions>
-                            <Image Height="130" Source="{Binding Product.Photo}" Grid.Column="0"/>
-                            <StackPanel VerticalAlignment="Center" Grid.Column="1">
-                                <TextBlock Style="{StaticResource TextBlockBase}" FontWeight="Bold" Text="{Binding Product.ProductName}"/>
-                                <TextBlock Style="{StaticResource TextBlockBase}" TextWrapping="Wrap" Text="{Binding Product.ProductDescription}"/>
-                                <TextBlock Style="{StaticResource TextBlockBase}" Text="{Binding Product.ManufacturerProduct.ManufacturerName, StringFormat=Производитель: {0}}"/>
-                                <TextBlock Style="{StaticResource TextBlockBase}">
-                                    <Run Text="Цена: "/>
-                                    <Run Text="{Binding Product.Cost, Mode=OneWay}" TextDecorations="{Binding Product.OldCost}"/>
-                                    <Run Text="{Binding Product.NewCost, Mode=OneWay}"/>
-                                </TextBlock>
-                                <TextBlock Style="{StaticResource TextBlockBase}" Text="{Binding Product.ProductDiscountAmount, StringFormat=Скидка: {0}%}"/>
-                            </StackPanel>
-                            <GroupBox VerticalAlignment="Center" Header="Количество" Style="{StaticResource GroupBoxStyle}" HorizontalAlignment="Center" Grid.Column="2">
-                                <TextBox Margin="5" Name="tbCount" HorizontalContentAlignment="Center" Text="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="tbCount_TextChanged"/>
-                            </GroupBox>
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <StackPanel Orientation="Horizontal" Grid.Row="2">
-            <StackPanel Margin="0,0,10,0">
-                <TextBlock Text="Сумма заказа:" Style="{StaticResource TextBlockBase}"/>
-                <TextBlock Name="tbSum"  Style="{StaticResource TextBlockBase}"/>
-            </StackPanel>
-            <StackPanel>
-                <TextBlock Text="Сумма скидки:" Style="{StaticResource TextBlockBase}"/>
-                <TextBlock Name="tbSumDiscount" Style="{StaticResource TextBlockBase}"/>
-            </StackPanel>
+        <StackPanel Margin="30,5,5,5" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+            <Image Margin="0,0,20,0" Source="\Resources\logo.png"/>
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Пиши-стирай" Style="{StaticResource TextBlockHeader}"/>
         </StackPanel>
-        <Button Name="btnCheckout" Grid.Row="2" Style="{StaticResource ButtonTemplate}" Width="200" Height="40" HorizontalAlignment="Right" Content="Оформить заказ" Click="btnCheckout_Click" Cursor="Hand"/>
-        <GroupBox Width="300" Header="Пункт выдачи" Style="{StaticResource GroupBoxStyle}">
-            <ComboBox Name="cbPickPoint" Margin="5"/>
-        </GroupBox>
+        <Frame NavigationUIVisibility="Hidden" Name="frmMain" Grid.Row="1"/>
     </Grid>
 </Window>

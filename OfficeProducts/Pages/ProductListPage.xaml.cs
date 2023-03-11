@@ -22,6 +22,7 @@ namespace OfficeProducts.Pages
     {
         int countList;
         Order order;
+        Classes.NameClass name;
         public ProductListPage(Classes.NameClass name)
         {
             InitializeComponent();
@@ -36,6 +37,7 @@ namespace OfficeProducts.Pages
             {
                 order.UserID = name.GetUserID;
             }
+            this.name = name;
         }
 
         void Filter()
@@ -133,6 +135,7 @@ namespace OfficeProducts.Pages
         {
             ViewOrderWindow view = new ViewOrderWindow(order, listOrder);
             view.ShowDialog();
+            Classes.FrameClass.frmMain.Navigate(new ProductListPage(name));
         }
     }
 }
