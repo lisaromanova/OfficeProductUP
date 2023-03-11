@@ -75,12 +75,12 @@
                                     <Run Text="{Binding NewCost, Mode=OneWay}"/>
                                 </TextBlock>
                             </StackPanel>
-                            <TextBlock VerticalAlignment="Center" Style="{StaticResource TextBlockBase}" HorizontalAlignment="Center" Grid.Column="2" Text="{Binding ProductDiscountMax}"/>
+                            <TextBlock VerticalAlignment="Center" Style="{StaticResource TextBlockBase}" HorizontalAlignment="Center" Grid.Column="2" Text="{Binding ProductDiscountAmount, StringFormat={}{0}%}"/>
                         </Grid>
                     </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Name="btnViewOrder" Visibility="Hidden" Grid.Row="2" Width="200" HorizontalAlignment="Right" Height="40" Style="{StaticResource ButtonTemplate}" Content="Просмотр заказа" Cursor="Hand"/>
+        <Button Name="btnViewOrder" Visibility="Hidden" Grid.Row="2" Width="200" HorizontalAlignment="Right" Height="40" Style="{StaticResource ButtonTemplate}" Click="btnViewOrder_Click" Content="Просмотр заказа" Cursor="Hand"/>
     </Grid>
 </Page>

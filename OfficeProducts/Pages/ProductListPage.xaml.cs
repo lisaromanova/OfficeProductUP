@@ -58,13 +58,13 @@ namespace OfficeProducts.Pages
                 switch(cbDiscount.SelectedIndex)
                 {
                     case 1:
-                        list = list.Where(x => x.ProductDiscountMax >= 0 && x.ProductDiscountMax < 10).ToList();
+                        list = list.Where(x => x.ProductDiscountAmount >= 0 && x.ProductDiscountAmount < 10).ToList();
                         break;
                     case 2:
-                        list = list.Where(x => x.ProductDiscountMax >= 10 && x.ProductDiscountMax < 15).ToList();
+                        list = list.Where(x => x.ProductDiscountAmount >= 10 && x.ProductDiscountAmount < 15).ToList();
                         break;
                     case 3:
-                        list = list.Where(x => x.ProductDiscountMax >= 15).ToList();
+                        list = list.Where(x => x.ProductDiscountAmount >= 15).ToList();
                         break;
                 }
             }
@@ -102,14 +102,37 @@ namespace OfficeProducts.Pages
         {
             MenuItem item = (MenuItem)sender;
             string id = item.Uid.ToString();
+            Product product = Classes.DataBaseClass.connect.Product.FirstOrDefault(x => x.ProductArticleNumber == id);
             btnViewOrder.Visibility = Visibility.Visible;
-            OrderProduct orderProduct = new OrderProduct()
+            int k = -1;
+            for (int i =0; i<listOrder.Count; i++)
             {
-                OrderID = order.OrderID,
-                ProductArticleNumber = id,
-                Quantity = 1
-            };
-            listOrder.Add(orderProduct);
+                if (listOrder[i].ProductArticleNumber == id)
+                {
+                    k = i;
+                }
+            }
+            if (k == -1)
+            {
+                OrderProduct orderProduct = new OrderProduct()
+                {
+                    OrderID = order.OrderID,
+                    ProductArticleNumber = id,
+                    Quantity = 1,
+                    Product = product
+                };
+                listOrder.Add(orderProduct);
+            }
+            else
+            {
+                listOrder[k].Quantity++;
+            }
+        }
+
+        private void btnViewOrder_Click(object sender, RoutedEventArgs e)
+        {
+            ViewOrderWindow view = new ViewOrderWindow(order, listOrder);
+            view.ShowDialog();
         }
     }
 }

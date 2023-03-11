@@ -83,7 +83,7 @@ namespace OfficeProducts
         {
             get
             {
-                if (ProductDiscountMax > 15)
+                if (ProductDiscountAmount != null)
                 {
                     return (SolidColorBrush)new BrushConverter().ConvertFrom("#7fff00");
                 }

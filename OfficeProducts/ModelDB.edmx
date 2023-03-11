@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище practic19Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище practic19Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CategoryProduct">
           <Key>
             <PropertyRef Name="CategoryID" />
@@ -87,7 +87,7 @@
           <Property Name="ProductCost" Type="decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="ProductDiscountMax" Type="float" />
           <Property Name="ProductDiscountAmount" Type="float" />
-          <Property Name="ProductQuantityInStock" Type="int" Nullable="false" />
+          <Property Name="ProductQuantityInStock" Type="int" />
           <Property Name="ProductStatus" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Role">
@@ -352,45 +352,112 @@
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="practic19Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DataBaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CategoryProduct" EntityType="practic19Model.CategoryProduct" />
+          <EntitySet Name="City" EntityType="practic19Model.City" />
+          <EntitySet Name="Logined" EntityType="practic19Model.Logined" />
+          <EntitySet Name="ManufacturerProduct" EntityType="practic19Model.ManufacturerProduct" />
+          <EntitySet Name="Order" EntityType="practic19Model.Order" />
+          <EntitySet Name="OrderProduct" EntityType="practic19Model.OrderProduct" />
+          <EntitySet Name="OrderStatus" EntityType="practic19Model.OrderStatus" />
+          <EntitySet Name="PickPoint" EntityType="practic19Model.PickPoint" />
+          <EntitySet Name="Product" EntityType="practic19Model.Product" />
+          <EntitySet Name="Role" EntityType="practic19Model.Role" />
+          <EntitySet Name="StreetPoint" EntityType="practic19Model.StreetPoint" />
+          <EntitySet Name="SupplierProduct" EntityType="practic19Model.SupplierProduct" />
+          <EntitySet Name="UnitOfMeasurement" EntityType="practic19Model.UnitOfMeasurement" />
+          <EntitySet Name="User" EntityType="practic19Model.User" />
+          <AssociationSet Name="FK__Product__Product__5070F446" Association="practic19Model.FK__Product__Product__5070F446">
+            <End Role="CategoryProduct" EntitySet="CategoryProduct" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StreetPoint_City" Association="practic19Model.FK_StreetPoint_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="StreetPoint" EntitySet="StreetPoint" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Logined__UserRol__398D8EEE" Association="practic19Model.FK__Logined__UserRol__398D8EEE">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Logined" EntitySet="Logined" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Logined" Association="practic19Model.FK_User_Logined">
+            <End Role="Logined" EntitySet="Logined" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__Product__5165187F" Association="practic19Model.FK__Product__Product__5165187F">
+            <End Role="ManufacturerProduct" EntitySet="ManufacturerProduct" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order__OrderStat__4316F928" Association="practic19Model.FK__Order__OrderStat__4316F928">
+            <End Role="OrderStatus" EntitySet="OrderStatus" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order__UserID__440B1D61" Association="practic19Model.FK__Order__UserID__440B1D61">
+            <End Role="User" EntitySet="User" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderProd__Order__5535A963" Association="practic19Model.FK__OrderProd__Order__5535A963">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderProduct" EntitySet="OrderProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_PickPoint" Association="practic19Model.FK_Order_PickPoint">
+            <End Role="PickPoint" EntitySet="PickPoint" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderProd__Produ__5629CD9C" Association="practic19Model.FK__OrderProd__Produ__5629CD9C">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="OrderProduct" EntitySet="OrderProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PickPoint_StreetPoint" Association="practic19Model.FK_PickPoint_StreetPoint">
+            <End Role="StreetPoint" EntitySet="StreetPoint" />
+            <End Role="PickPoint" EntitySet="PickPoint" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__Product__4F7CD00D" Association="practic19Model.FK__Product__Product__4F7CD00D">
+            <End Role="UnitOfMeasurement" EntitySet="UnitOfMeasurement" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__Product__52593CB8" Association="practic19Model.FK__Product__Product__52593CB8">
+            <End Role="SupplierProduct" EntitySet="SupplierProduct" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="CategoryProduct">
           <Key>
             <PropertyRef Name="CategoryID" />
           </Key>
           <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__Product__Product__5070F446" FromRole="CategoryProduct" ToRole="Product" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="practic19Model.FK__Product__Product__5070F446" FromRole="CategoryProduct" ToRole="Product" />
         </EntityType>
         <EntityType Name="City">
           <Key>
             <PropertyRef Name="CityID" />
           </Key>
           <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="StreetPoint" Relationship="Self.FK_StreetPoint_City" FromRole="City" ToRole="StreetPoint" />
+          <Property Name="CityName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="StreetPoint" Relationship="practic19Model.FK_StreetPoint_City" FromRole="City" ToRole="StreetPoint" />
         </EntityType>
         <EntityType Name="Logined">
           <Key>
             <PropertyRef Name="LoginedID" />
           </Key>
           <Property Name="LoginedID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserLogin" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UserPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserLogin" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserPassword" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="UserRoleID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Role" Relationship="Self.FK__Logined__UserRol__398D8EEE" FromRole="Logined" ToRole="Role" />
-          <NavigationProperty Name="User" Relationship="Self.FK_User_Logined" FromRole="Logined" ToRole="User" />
+          <NavigationProperty Name="Role" Relationship="practic19Model.FK__Logined__UserRol__398D8EEE" FromRole="Logined" ToRole="Role" />
+          <NavigationProperty Name="User" Relationship="practic19Model.FK_User_Logined" FromRole="Logined" ToRole="User" />
         </EntityType>
         <EntityType Name="ManufacturerProduct">
           <Key>
             <PropertyRef Name="ManufacturerID" />
           </Key>
           <Property Name="ManufacturerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ManufacturerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__Product__Product__5165187F" FromRole="ManufacturerProduct" ToRole="Product" />
+          <Property Name="ManufacturerName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="practic19Model.FK__Product__Product__5165187F" FromRole="ManufacturerProduct" ToRole="Product" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -403,10 +470,10 @@
           <Property Name="UserID" Type="Int32" />
           <Property Name="NumberReceiving" Type="Int32" Nullable="false" />
           <Property Name="OrderPickupPointID" Type="Int32" />
-          <NavigationProperty Name="OrderStatus1" Relationship="Self.FK__Order__OrderStat__4316F928" FromRole="Order" ToRole="OrderStatus" />
-          <NavigationProperty Name="User" Relationship="Self.FK__Order__UserID__440B1D61" FromRole="Order" ToRole="User" />
-          <NavigationProperty Name="OrderProduct" Relationship="Self.FK__OrderProd__Order__5535A963" FromRole="Order" ToRole="OrderProduct" />
-          <NavigationProperty Name="PickPoint" Relationship="Self.FK_Order_PickPoint" FromRole="Order" ToRole="PickPoint" />
+          <NavigationProperty Name="OrderStatus1" Relationship="practic19Model.FK__Order__OrderStat__4316F928" FromRole="Order" ToRole="OrderStatus" />
+          <NavigationProperty Name="User" Relationship="practic19Model.FK__Order__UserID__440B1D61" FromRole="Order" ToRole="User" />
+          <NavigationProperty Name="OrderProduct" Relationship="practic19Model.FK__OrderProd__Order__5535A963" FromRole="Order" ToRole="OrderProduct" />
+          <NavigationProperty Name="PickPoint" Relationship="practic19Model.FK_Order_PickPoint" FromRole="Order" ToRole="PickPoint" />
         </EntityType>
         <EntityType Name="OrderProduct">
           <Key>
@@ -414,18 +481,18 @@
           </Key>
           <Property Name="OrderProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OrderID" Type="Int32" Nullable="false" />
-          <Property Name="ProductArticleNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductArticleNumber" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Order" Relationship="Self.FK__OrderProd__Order__5535A963" FromRole="OrderProduct" ToRole="Order" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__OrderProd__Produ__5629CD9C" FromRole="OrderProduct" ToRole="Product" />
+          <NavigationProperty Name="Order" Relationship="practic19Model.FK__OrderProd__Order__5535A963" FromRole="OrderProduct" ToRole="Order" />
+          <NavigationProperty Name="Product" Relationship="practic19Model.FK__OrderProd__Produ__5629CD9C" FromRole="OrderProduct" ToRole="Product" />
         </EntityType>
         <EntityType Name="OrderStatus">
           <Key>
             <PropertyRef Name="OrderStatusID" />
           </Key>
           <Property Name="OrderStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderStatusName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Order" Relationship="Self.FK__Order__OrderStat__4316F928" FromRole="OrderStatus" ToRole="Order" />
+          <Property Name="OrderStatusName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Order" Relationship="practic19Model.FK__Order__OrderStat__4316F928" FromRole="OrderStatus" ToRole="Order" />
         </EntityType>
         <EntityType Name="PickPoint">
           <Key>
@@ -435,39 +502,39 @@
           <Property Name="PickPointIndex" Type="Int32" Nullable="false" />
           <Property Name="StreetID" Type="Int32" Nullable="false" />
           <Property Name="PickPointNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Order_PickPoint" FromRole="PickPoint" ToRole="Order" />
-          <NavigationProperty Name="StreetPoint" Relationship="Self.FK_PickPoint_StreetPoint" FromRole="PickPoint" ToRole="StreetPoint" />
+          <NavigationProperty Name="Order" Relationship="practic19Model.FK_Order_PickPoint" FromRole="PickPoint" ToRole="Order" />
+          <NavigationProperty Name="StreetPoint" Relationship="practic19Model.FK_PickPoint_StreetPoint" FromRole="PickPoint" ToRole="StreetPoint" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="ProductArticleNumber" />
           </Key>
-          <Property Name="ProductArticleNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ProductName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductArticleNumber" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ProductUnit" Type="Int32" Nullable="false" />
-          <Property Name="ProductDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ProductCategoryID" Type="Int32" Nullable="false" />
           <Property Name="ProductPhoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ProductManufacturerID" Type="Int32" Nullable="false" />
           <Property Name="ProductSupplierID" Type="Int32" Nullable="false" />
-          <Property Name="ProductCost" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ProductCost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="ProductDiscountMax" Type="Double" />
           <Property Name="ProductDiscountAmount" Type="Double" />
-          <Property Name="ProductQuantityInStock" Type="Int32" Nullable="false" />
+          <Property Name="ProductQuantityInStock" Type="Int32" />
           <Property Name="ProductStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CategoryProduct" Relationship="Self.FK__Product__Product__5070F446" FromRole="Product" ToRole="CategoryProduct" />
-          <NavigationProperty Name="ManufacturerProduct" Relationship="Self.FK__Product__Product__5165187F" FromRole="Product" ToRole="ManufacturerProduct" />
-          <NavigationProperty Name="OrderProduct" Relationship="Self.FK__OrderProd__Produ__5629CD9C" FromRole="Product" ToRole="OrderProduct" />
-          <NavigationProperty Name="UnitOfMeasurement" Relationship="Self.FK__Product__Product__4F7CD00D" FromRole="Product" ToRole="UnitOfMeasurement" />
-          <NavigationProperty Name="SupplierProduct" Relationship="Self.FK__Product__Product__52593CB8" FromRole="Product" ToRole="SupplierProduct" />
+          <NavigationProperty Name="CategoryProduct" Relationship="practic19Model.FK__Product__Product__5070F446" FromRole="Product" ToRole="CategoryProduct" />
+          <NavigationProperty Name="ManufacturerProduct" Relationship="practic19Model.FK__Product__Product__5165187F" FromRole="Product" ToRole="ManufacturerProduct" />
+          <NavigationProperty Name="OrderProduct" Relationship="practic19Model.FK__OrderProd__Produ__5629CD9C" FromRole="Product" ToRole="OrderProduct" />
+          <NavigationProperty Name="UnitOfMeasurement" Relationship="practic19Model.FK__Product__Product__4F7CD00D" FromRole="Product" ToRole="UnitOfMeasurement" />
+          <NavigationProperty Name="SupplierProduct" Relationship="practic19Model.FK__Product__Product__52593CB8" FromRole="Product" ToRole="SupplierProduct" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="RoleID" />
           </Key>
           <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RoleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Logined" Relationship="Self.FK__Logined__UserRol__398D8EEE" FromRole="Role" ToRole="Logined" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Logined" Relationship="practic19Model.FK__Logined__UserRol__398D8EEE" FromRole="Role" ToRole="Logined" />
         </EntityType>
         <EntityType Name="StreetPoint">
           <Key>
@@ -475,17 +542,17 @@
           </Key>
           <Property Name="StreetID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CityID" Type="Int32" Nullable="false" />
-          <Property Name="StreetName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="City" Relationship="Self.FK_StreetPoint_City" FromRole="StreetPoint" ToRole="City" />
-          <NavigationProperty Name="PickPoint" Relationship="Self.FK_PickPoint_StreetPoint" FromRole="StreetPoint" ToRole="PickPoint" />
+          <Property Name="StreetName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="City" Relationship="practic19Model.FK_StreetPoint_City" FromRole="StreetPoint" ToRole="City" />
+          <NavigationProperty Name="PickPoint" Relationship="practic19Model.FK_PickPoint_StreetPoint" FromRole="StreetPoint" ToRole="PickPoint" />
         </EntityType>
         <EntityType Name="SupplierProduct">
           <Key>
             <PropertyRef Name="SupplierID" />
           </Key>
           <Property Name="SupplierID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SupplierName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__Product__Product__52593CB8" FromRole="SupplierProduct" ToRole="Product" />
+          <Property Name="SupplierName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="practic19Model.FK__Product__Product__52593CB8" FromRole="SupplierProduct" ToRole="Product" />
         </EntityType>
         <EntityType Name="UnitOfMeasurement">
           <Key>
@@ -493,22 +560,22 @@
           </Key>
           <Property Name="UnitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UnitOfMeasurement1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__Product__Product__4F7CD00D" FromRole="UnitOfMeasurement" ToRole="Product" />
+          <NavigationProperty Name="Product" Relationship="practic19Model.FK__Product__Product__4F7CD00D" FromRole="UnitOfMeasurement" ToRole="Product" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="Int32" Nullable="false" />
-          <Property Name="UserSurname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UserPatronymic" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Logined" Relationship="Self.FK_User_Logined" FromRole="User" ToRole="Logined" />
-          <NavigationProperty Name="Order" Relationship="Self.FK__Order__UserID__440B1D61" FromRole="User" ToRole="Order" />
+          <Property Name="UserSurname" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserPatronymic" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Logined" Relationship="practic19Model.FK_User_Logined" FromRole="User" ToRole="Logined" />
+          <NavigationProperty Name="Order" Relationship="practic19Model.FK__Order__UserID__440B1D61" FromRole="User" ToRole="Order" />
         </EntityType>
         <Association Name="FK__Product__Product__5070F446">
-          <End Role="CategoryProduct" Type="Self.CategoryProduct" Multiplicity="1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <End Type="practic19Model.CategoryProduct" Role="CategoryProduct" Multiplicity="1" />
+          <End Type="practic19Model.Product" Role="Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CategoryProduct">
               <PropertyRef Name="CategoryID" />
@@ -519,8 +586,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_StreetPoint_City">
-          <End Role="City" Type="Self.City" Multiplicity="1" />
-          <End Role="StreetPoint" Type="Self.StreetPoint" Multiplicity="*" />
+          <End Type="practic19Model.City" Role="City" Multiplicity="1" />
+          <End Type="practic19Model.StreetPoint" Role="StreetPoint" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="City">
               <PropertyRef Name="CityID" />
@@ -531,8 +598,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Logined__UserRol__398D8EEE">
-          <End Role="Role" Type="Self.Role" Multiplicity="1" />
-          <End Role="Logined" Type="Self.Logined" Multiplicity="*" />
+          <End Type="practic19Model.Role" Role="Role" Multiplicity="1" />
+          <End Type="practic19Model.Logined" Role="Logined" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Role">
               <PropertyRef Name="RoleID" />
@@ -543,8 +610,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_User_Logined">
-          <End Role="Logined" Type="Self.Logined" Multiplicity="1" />
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Type="practic19Model.Logined" Role="Logined" Multiplicity="1" />
+          <End Type="practic19Model.User" Role="User" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Logined">
               <PropertyRef Name="LoginedID" />
@@ -555,8 +622,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Product__Product__5165187F">
-          <End Role="ManufacturerProduct" Type="Self.ManufacturerProduct" Multiplicity="1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <End Type="practic19Model.ManufacturerProduct" Role="ManufacturerProduct" Multiplicity="1" />
+          <End Type="practic19Model.Product" Role="Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ManufacturerProduct">
               <PropertyRef Name="ManufacturerID" />
@@ -567,8 +634,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Order__OrderStat__4316F928">
-          <End Role="OrderStatus" Type="Self.OrderStatus" Multiplicity="1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <End Type="practic19Model.OrderStatus" Role="OrderStatus" Multiplicity="1" />
+          <End Type="practic19Model.Order" Role="Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="OrderStatus">
               <PropertyRef Name="OrderStatusID" />
@@ -579,8 +646,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Order__UserID__440B1D61">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <End Type="practic19Model.User" Role="User" Multiplicity="0..1" />
+          <End Type="practic19Model.Order" Role="Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="UserID" />
@@ -591,8 +658,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__OrderProd__Order__5535A963">
-          <End Role="Order" Type="Self.Order" Multiplicity="1" />
-          <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
+          <End Type="practic19Model.Order" Role="Order" Multiplicity="1" />
+          <End Type="practic19Model.OrderProduct" Role="OrderProduct" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Order">
               <PropertyRef Name="OrderID" />
@@ -603,8 +670,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Order_PickPoint">
-          <End Role="PickPoint" Type="Self.PickPoint" Multiplicity="0..1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <End Type="practic19Model.PickPoint" Role="PickPoint" Multiplicity="0..1" />
+          <End Type="practic19Model.Order" Role="Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PickPoint">
               <PropertyRef Name="PickPointID" />
@@ -615,8 +682,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__OrderProd__Produ__5629CD9C">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
+          <End Type="practic19Model.Product" Role="Product" Multiplicity="1" />
+          <End Type="practic19Model.OrderProduct" Role="OrderProduct" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="ProductArticleNumber" />
@@ -627,8 +694,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PickPoint_StreetPoint">
-          <End Role="StreetPoint" Type="Self.StreetPoint" Multiplicity="1" />
-          <End Role="PickPoint" Type="Self.PickPoint" Multiplicity="*" />
+          <End Type="practic19Model.StreetPoint" Role="StreetPoint" Multiplicity="1" />
+          <End Type="practic19Model.PickPoint" Role="PickPoint" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="StreetPoint">
               <PropertyRef Name="StreetID" />
@@ -639,8 +706,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Product__Product__4F7CD00D">
-          <End Role="UnitOfMeasurement" Type="Self.UnitOfMeasurement" Multiplicity="1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <End Type="practic19Model.UnitOfMeasurement" Role="UnitOfMeasurement" Multiplicity="1" />
+          <End Type="practic19Model.Product" Role="Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UnitOfMeasurement">
               <PropertyRef Name="UnitID" />
@@ -651,8 +718,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Product__Product__52593CB8">
-          <End Role="SupplierProduct" Type="Self.SupplierProduct" Multiplicity="1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <End Type="practic19Model.SupplierProduct" Role="SupplierProduct" Multiplicity="1" />
+          <End Type="practic19Model.Product" Role="Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SupplierProduct">
               <PropertyRef Name="SupplierID" />
@@ -662,75 +729,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DataBaseEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CategoryProduct" EntityType="Self.CategoryProduct" />
-          <EntitySet Name="City" EntityType="Self.City" />
-          <EntitySet Name="Logined" EntityType="Self.Logined" />
-          <EntitySet Name="ManufacturerProduct" EntityType="Self.ManufacturerProduct" />
-          <EntitySet Name="Order" EntityType="Self.Order" />
-          <EntitySet Name="OrderProduct" EntityType="Self.OrderProduct" />
-          <EntitySet Name="OrderStatus" EntityType="Self.OrderStatus" />
-          <EntitySet Name="PickPoint" EntityType="Self.PickPoint" />
-          <EntitySet Name="Product" EntityType="Self.Product" />
-          <EntitySet Name="Role" EntityType="Self.Role" />
-          <EntitySet Name="StreetPoint" EntityType="Self.StreetPoint" />
-          <EntitySet Name="SupplierProduct" EntityType="Self.SupplierProduct" />
-          <EntitySet Name="UnitOfMeasurement" EntityType="Self.UnitOfMeasurement" />
-          <EntitySet Name="User" EntityType="Self.User" />
-          <AssociationSet Name="FK__Product__Product__5070F446" Association="Self.FK__Product__Product__5070F446">
-            <End Role="CategoryProduct" EntitySet="CategoryProduct" />
-            <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StreetPoint_City" Association="Self.FK_StreetPoint_City">
-            <End Role="City" EntitySet="City" />
-            <End Role="StreetPoint" EntitySet="StreetPoint" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Logined__UserRol__398D8EEE" Association="Self.FK__Logined__UserRol__398D8EEE">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="Logined" EntitySet="Logined" />
-          </AssociationSet>
-          <AssociationSet Name="FK_User_Logined" Association="Self.FK_User_Logined">
-            <End Role="Logined" EntitySet="Logined" />
-            <End Role="User" EntitySet="User" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Product__Product__5165187F" Association="Self.FK__Product__Product__5165187F">
-            <End Role="ManufacturerProduct" EntitySet="ManufacturerProduct" />
-            <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Order__OrderStat__4316F928" Association="Self.FK__Order__OrderStat__4316F928">
-            <End Role="OrderStatus" EntitySet="OrderStatus" />
-            <End Role="Order" EntitySet="Order" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Order__UserID__440B1D61" Association="Self.FK__Order__UserID__440B1D61">
-            <End Role="User" EntitySet="User" />
-            <End Role="Order" EntitySet="Order" />
-          </AssociationSet>
-          <AssociationSet Name="FK__OrderProd__Order__5535A963" Association="Self.FK__OrderProd__Order__5535A963">
-            <End Role="Order" EntitySet="Order" />
-            <End Role="OrderProduct" EntitySet="OrderProduct" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_PickPoint" Association="Self.FK_Order_PickPoint">
-            <End Role="PickPoint" EntitySet="PickPoint" />
-            <End Role="Order" EntitySet="Order" />
-          </AssociationSet>
-          <AssociationSet Name="FK__OrderProd__Produ__5629CD9C" Association="Self.FK__OrderProd__Produ__5629CD9C">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="OrderProduct" EntitySet="OrderProduct" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PickPoint_StreetPoint" Association="Self.FK_PickPoint_StreetPoint">
-            <End Role="StreetPoint" EntitySet="StreetPoint" />
-            <End Role="PickPoint" EntitySet="PickPoint" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Product__Product__4F7CD00D" Association="Self.FK__Product__Product__4F7CD00D">
-            <End Role="UnitOfMeasurement" EntitySet="UnitOfMeasurement" />
-            <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Product__Product__52593CB8" Association="Self.FK__Product__Product__52593CB8">
-            <End Role="SupplierProduct" EntitySet="SupplierProduct" />
-            <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -739,137 +738,137 @@
           <EntitySetMapping Name="CategoryProduct">
             <EntityTypeMapping TypeName="practic19Model.CategoryProduct">
               <MappingFragment StoreEntitySet="CategoryProduct">
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="City">
             <EntityTypeMapping TypeName="practic19Model.City">
               <MappingFragment StoreEntitySet="City">
-                <ScalarProperty Name="CityID" ColumnName="CityID" />
                 <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Logined">
             <EntityTypeMapping TypeName="practic19Model.Logined">
               <MappingFragment StoreEntitySet="Logined">
-                <ScalarProperty Name="LoginedID" ColumnName="LoginedID" />
-                <ScalarProperty Name="UserLogin" ColumnName="UserLogin" />
-                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
                 <ScalarProperty Name="UserRoleID" ColumnName="UserRoleID" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="UserLogin" ColumnName="UserLogin" />
+                <ScalarProperty Name="LoginedID" ColumnName="LoginedID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ManufacturerProduct">
             <EntityTypeMapping TypeName="practic19Model.ManufacturerProduct">
               <MappingFragment StoreEntitySet="ManufacturerProduct">
-                <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
                 <ScalarProperty Name="ManufacturerName" ColumnName="ManufacturerName" />
+                <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Order">
             <EntityTypeMapping TypeName="practic19Model.Order">
               <MappingFragment StoreEntitySet="Order">
-                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
-                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
-                <ScalarProperty Name="OrderDeliveryDate" ColumnName="OrderDeliveryDate" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="NumberReceiving" ColumnName="NumberReceiving" />
                 <ScalarProperty Name="OrderPickupPointID" ColumnName="OrderPickupPointID" />
+                <ScalarProperty Name="NumberReceiving" ColumnName="NumberReceiving" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="OrderDeliveryDate" ColumnName="OrderDeliveryDate" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrderProduct">
             <EntityTypeMapping TypeName="practic19Model.OrderProduct">
               <MappingFragment StoreEntitySet="OrderProduct">
-                <ScalarProperty Name="OrderProductID" ColumnName="OrderProductID" />
-                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-                <ScalarProperty Name="ProductArticleNumber" ColumnName="ProductArticleNumber" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductArticleNumber" ColumnName="ProductArticleNumber" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="OrderProductID" ColumnName="OrderProductID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrderStatus">
             <EntityTypeMapping TypeName="practic19Model.OrderStatus">
               <MappingFragment StoreEntitySet="OrderStatus">
-                <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
                 <ScalarProperty Name="OrderStatusName" ColumnName="OrderStatusName" />
+                <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PickPoint">
             <EntityTypeMapping TypeName="practic19Model.PickPoint">
               <MappingFragment StoreEntitySet="PickPoint">
-                <ScalarProperty Name="PickPointID" ColumnName="PickPointID" />
-                <ScalarProperty Name="PickPointIndex" ColumnName="PickPointIndex" />
-                <ScalarProperty Name="StreetID" ColumnName="StreetID" />
                 <ScalarProperty Name="PickPointNumber" ColumnName="PickPointNumber" />
+                <ScalarProperty Name="StreetID" ColumnName="StreetID" />
+                <ScalarProperty Name="PickPointIndex" ColumnName="PickPointIndex" />
+                <ScalarProperty Name="PickPointID" ColumnName="PickPointID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="practic19Model.Product">
               <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="ProductArticleNumber" ColumnName="ProductArticleNumber" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="ProductUnit" ColumnName="ProductUnit" />
-                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
-                <ScalarProperty Name="ProductCategoryID" ColumnName="ProductCategoryID" />
-                <ScalarProperty Name="ProductPhoto" ColumnName="ProductPhoto" />
-                <ScalarProperty Name="ProductManufacturerID" ColumnName="ProductManufacturerID" />
-                <ScalarProperty Name="ProductSupplierID" ColumnName="ProductSupplierID" />
-                <ScalarProperty Name="ProductCost" ColumnName="ProductCost" />
-                <ScalarProperty Name="ProductDiscountMax" ColumnName="ProductDiscountMax" />
-                <ScalarProperty Name="ProductDiscountAmount" ColumnName="ProductDiscountAmount" />
-                <ScalarProperty Name="ProductQuantityInStock" ColumnName="ProductQuantityInStock" />
                 <ScalarProperty Name="ProductStatus" ColumnName="ProductStatus" />
+                <ScalarProperty Name="ProductQuantityInStock" ColumnName="ProductQuantityInStock" />
+                <ScalarProperty Name="ProductDiscountAmount" ColumnName="ProductDiscountAmount" />
+                <ScalarProperty Name="ProductDiscountMax" ColumnName="ProductDiscountMax" />
+                <ScalarProperty Name="ProductCost" ColumnName="ProductCost" />
+                <ScalarProperty Name="ProductSupplierID" ColumnName="ProductSupplierID" />
+                <ScalarProperty Name="ProductManufacturerID" ColumnName="ProductManufacturerID" />
+                <ScalarProperty Name="ProductPhoto" ColumnName="ProductPhoto" />
+                <ScalarProperty Name="ProductCategoryID" ColumnName="ProductCategoryID" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="ProductUnit" ColumnName="ProductUnit" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductArticleNumber" ColumnName="ProductArticleNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Role">
             <EntityTypeMapping TypeName="practic19Model.Role">
               <MappingFragment StoreEntitySet="Role">
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
                 <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="StreetPoint">
             <EntityTypeMapping TypeName="practic19Model.StreetPoint">
               <MappingFragment StoreEntitySet="StreetPoint">
-                <ScalarProperty Name="StreetID" ColumnName="StreetID" />
-                <ScalarProperty Name="CityID" ColumnName="CityID" />
                 <ScalarProperty Name="StreetName" ColumnName="StreetName" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="StreetID" ColumnName="StreetID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SupplierProduct">
             <EntityTypeMapping TypeName="practic19Model.SupplierProduct">
               <MappingFragment StoreEntitySet="SupplierProduct">
-                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
                 <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UnitOfMeasurement">
             <EntityTypeMapping TypeName="practic19Model.UnitOfMeasurement">
               <MappingFragment StoreEntitySet="UnitOfMeasurement">
-                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
                 <ScalarProperty Name="UnitOfMeasurement1" ColumnName="UnitOfMeasurement" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="practic19Model.User">
               <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="UserSurname" ColumnName="UserSurname" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="UserPatronymic" ColumnName="UserPatronymic" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserSurname" ColumnName="UserSurname" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
