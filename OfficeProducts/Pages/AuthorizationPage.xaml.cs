@@ -116,7 +116,7 @@ namespace OfficeProducts.Pages
                         {
                             name.Name = user.User.UserSurname + " "+user.User.UserName + " " + user.User.UserPatronymic;
                             name.ButtonVisible = Visibility.Visible;
-                            name.GetUserID = user.LoginedID;
+                            name.GetUser = user.User;
                             MessageBox.Show("Успешная авторизация!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
                             Classes.FrameClass.frmMain.Navigate(new ProductListPage(name));
                         }
@@ -135,7 +135,7 @@ namespace OfficeProducts.Pages
                         if (user != null && tbCaptcha.Text == str)
                         {
                             name.Name = user.User.UserSurname + " " + user.User.UserName + " " + user.User.UserPatronymic;
-                            name.GetUserID = user.LoginedID;
+                            name.GetUser = user.User;
                             name.ButtonVisible = Visibility.Visible;
                             MessageBox.Show("Успешная авторизация!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
                             Classes.FrameClass.frmMain.Navigate(new ProductListPage(name));

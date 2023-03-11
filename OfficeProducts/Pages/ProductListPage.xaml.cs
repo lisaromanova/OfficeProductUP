@@ -33,9 +33,10 @@ namespace OfficeProducts.Pages
             order = new Order();
             order.OrderStatus = 1;
             order.OrderDate = DateTime.Now;
-            if(name.GetUserID != 0)
+            if(name.GetUser != null)
             {
-                order.UserID = name.GetUserID;
+                order.UserID = name.GetUser.UserID;
+                order.User = name.GetUser;
             }
             this.name = name;
         }
@@ -136,6 +137,11 @@ namespace OfficeProducts.Pages
             ViewOrderWindow view = new ViewOrderWindow(order, listOrder);
             view.ShowDialog();
             Classes.FrameClass.frmMain.Navigate(new ProductListPage(name));
+        }
+
+        private void btnOrders_Click(object sender, RoutedEventArgs e)
+        {
+            Classes.FrameClass.frmMain.Navigate(new WorkWithOrderPage(name));
         }
     }
 }

@@ -80,6 +80,7 @@
     <Compile Include="Classes\DataBaseClass.cs" />
     <Compile Include="Classes\FrameClass.cs" />
     <Compile Include="Classes\NameClass.cs" />
+    <Compile Include="Classes\OrderPartialClass.cs" />
     <Compile Include="Classes\PickPointPartialClass.cs" />
     <Compile Include="Classes\ProductPartialClass.cs" />
     <Compile Include="Logined.cs">
@@ -113,6 +114,9 @@
     </Compile>
     <Compile Include="Pages\TicketPage.xaml.cs">
       <DependentUpon>TicketPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WorkWithOrderPage.xaml.cs">
+      <DependentUpon>WorkWithOrderPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="PickPoint.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
@@ -163,6 +167,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\TicketPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\WorkWithOrderPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -9,8 +9,59 @@
       Title="TicketPage">
 
     <Grid>
-        <StackPanel>
-            
-        </StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+        <Grid Name="gridTicket" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock HorizontalAlignment="Center" Text="Талон" Style="{StaticResource TextBlockHeader}" Grid.ColumnSpan="2" Grid.Row="0"/>
+            <StackPanel HorizontalAlignment="Center" Grid.Column="0" Grid.Row="1">
+                <TextBlock TextWrapping="Wrap" Margin="10" Style="{StaticResource TextBlockBase}">
+                <Run Text="Дата заказа: " FontWeight="Bold"/>
+                <Run Name="rDateOrder"/>
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap" Margin="10" Style="{StaticResource TextBlockBase}">
+                <Run Text="Дата выдачи: " FontWeight="Bold"/>
+                <Run Name="rDate"/>
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap" Margin="10" Style="{StaticResource TextBlockBase}">
+                <Run Text="Номер заказа: " FontWeight="Bold"/>
+                <Run Name="rNumber"/>
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap" Margin="10" Style="{StaticResource TextBlockBase}">
+                <Run Text="Сумма заказа: " FontWeight="Bold"/>
+                <Run Name="rSum"/>
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap" Margin="10" Style="{StaticResource TextBlockBase}">
+                <Run Text="Сумма скидки: " FontWeight="Bold"/>
+                <Run Name="rDiscount"/>
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap" Margin="10" Style="{StaticResource TextBlockBase}">
+                <Run Text="Пункт выдачи: " FontWeight="Bold"/>
+                <Run Name="rOrder"/>
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap" Margin="10" Style="{StaticResource TextBlockBase}">
+                <Run Text="Код получения: " FontWeight="Bold"/>
+                <Run Name="rKod" FontWeight="Bold"/>
+                </TextBlock>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center" Margin="10,0,0,0" Grid.Column="1" Grid.Row="1">
+                <TextBlock Margin="10" Text="Состав заказа: " FontWeight="Bold" Style="{StaticResource TextBlockBase}"/>
+                <TextBlock TextWrapping="Wrap" Margin="10" Name="tbOrder" Style="{StaticResource TextBlockBase}"/>
+                <TextBlock TextWrapping="Wrap" Margin="10" Name="user" Visibility="Collapsed" Style="{StaticResource TextBlockBase}">
+                <Run Text="Клиент: " FontWeight="Bold"/>
+                <Run Name="tbUser"/>
+                </TextBlock>
+            </StackPanel>
+        </Grid>
+        <Button Name="btnPdf" Style="{StaticResource ButtonTemplate}" Content="Сохранить в PDF" Width="250" Height="40" Grid.Row="1" Click="btnPdf_Click"/>
     </Grid>
 </Page>

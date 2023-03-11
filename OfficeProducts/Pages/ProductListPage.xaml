@@ -82,5 +82,6 @@
             </ListView.ItemTemplate>
         </ListView>
         <Button Name="btnViewOrder" Visibility="Hidden" Grid.Row="2" Width="200" HorizontalAlignment="Right" Height="40" Style="{StaticResource ButtonTemplate}" Click="btnViewOrder_Click" Content="Просмотр заказа" Cursor="Hand"/>
+        <Button Name="btnOrders" Grid.Row="2" Width="200" HorizontalAlignment="Left" Height="40" Style="{StaticResource ButtonTemplate}" Click="btnOrders_Click" Content="Просмотр заказов" Cursor="Hand"/>
     </Grid>
 </Page>

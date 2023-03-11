@@ -12,6 +12,7 @@ namespace OfficeProducts.Classes
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        User user;
         string name = "";
         public string Name
         {
@@ -23,13 +24,12 @@ namespace OfficeProducts.Classes
             }
         }
 
-        int id = 0;
-        public int GetUserID
+        public User GetUser
         {
-            get => id;
+            get => user;
             set
             {
-                id = value;
+                user = value;
             }
         }
 

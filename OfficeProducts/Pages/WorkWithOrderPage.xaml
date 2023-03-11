@@ -1,0 +1,104 @@
+﻿<Page x:Class="OfficeProducts.Pages.WorkWithOrderPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:OfficeProducts.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="WorkWithOrderPage">
+
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="110"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <TextBlock Name="tbCount" HorizontalAlignment="Center" Style="{StaticResource TextBlockBase}"/>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="0">
+                <GroupBox Width="250" Header="Сортировка" Style="{StaticResource GroupBoxStyle}">
+                    <ComboBox Margin="5" Name="cbSort" SelectionChanged="cbSort_SelectionChanged">
+                        <ComboBoxItem>
+                            По возрастанию скидки
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            По убыванию скидки
+                        </ComboBoxItem>
+                    </ComboBox>
+                </GroupBox>
+                <GroupBox Width="200" Header="Скидка" Style="{StaticResource GroupBoxStyle}">
+                    <ComboBox Margin="5" Name="cbDiscount" SelectionChanged="cbSort_SelectionChanged">
+                        <ComboBoxItem>
+                            Все диапазоны
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            От 0 - 10%
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            От 11 - 14%
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            15% и более
+                        </ComboBoxItem>
+                    </ComboBox>
+                </GroupBox>
+            </StackPanel>
+        </StackPanel>
+        <TextBlock Name="tbEmpty" Text="Записи не найдены" FontSize="40" FontFamily="Comic Sans MS" VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="Collapsed" Margin="0,169,0,0" Grid.Row="1"/>
+        <ListView HorizontalContentAlignment="Stretch" Name="lstOrder" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Black" BorderThickness="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel HorizontalAlignment="Center" Grid.Column="0">
+                                <TextBlock TextWrapping="Wrap" Margin="10" Style="{StaticResource TextBlockBase}">
+                <Run Text="Дата заказа: " FontWeight="Bold"/>
+                <Run Text="{Binding OrderDate, StringFormat={}dd.MM.yyyy}"/>
+                                </TextBlock>
+                                <TextBlock TextWrapping="Wrap" Margin="10" Style="{StaticResource TextBlockBase}">
+                <Run Text="Дата выдачи: " FontWeight="Bold"/>
+                <Run Text="{Binding OrderDeliveryDate, StringFormat={}dd.MM.yyyy}"/>
+                                </TextBlock>
+                                <TextBlock TextWrapping="Wrap" Margin="10" Style="{StaticResource TextBlockBase}">
+                <Run Text="Номер заказа: " FontWeight="Bold"/>
+                <Run Text="{Binding OrderID}"/>
+                                </TextBlock>
+                                <TextBlock TextWrapping="Wrap" Margin="10" Style="{StaticResource TextBlockBase}">
+                <Run Text="Сумма заказа: " FontWeight="Bold"/>
+                <Run Text="{Binding SumOrder, Mode=OneWay}"/>
+                                </TextBlock>
+                                <TextBlock TextWrapping="Wrap" Margin="10" Style="{StaticResource TextBlockBase}">
+                <Run Text="Сумма скидки: " FontWeight="Bold"/>
+                <Run Text="{Binding SumDiscount, Mode=OneWay}"/>
+                                </TextBlock>
+                                <TextBlock TextWrapping="Wrap" Margin="10" Style="{StaticResource TextBlockBase}">
+                <Run Text="Пункт выдачи: " FontWeight="Bold"/>
+                <Run Text="{Binding PickPoint.PickPointName, Mode=OneWay}"/>
+                                </TextBlock>
+                                <TextBlock TextWrapping="Wrap" Margin="10" Style="{StaticResource TextBlockBase}">
+                <Run Text="Код получения: " FontWeight="Bold"/>
+                <Run Text="{Binding NumberReceiving}"/>
+                                </TextBlock>
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Center" Margin="10,0,0,0" Grid.Column="1">
+                                <TextBlock Margin="10" Text="Состав заказа: " FontWeight="Bold" Style="{StaticResource TextBlockBase}"/>
+                                <TextBlock TextWrapping="Wrap" Margin="10" Text="{Binding Products}" Style="{StaticResource TextBlockBase}"/>
+                                <TextBlock TextWrapping="Wrap" Margin="10"  Style="{StaticResource TextBlockBase}">
+                <Run Text="Клиент: " FontWeight="Bold"/>
+                <Run Text="{Binding UserName, Mode=OneWay}"/>
+                                </TextBlock>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Name="btnBack" Grid.Row="2" Width="200" HorizontalAlignment="Left" Height="40" Style="{StaticResource ButtonTemplate}" Click="btnBack_Click" Content="Вернуться" Cursor="Hand"/>
+    </Grid>
+
+</Page>

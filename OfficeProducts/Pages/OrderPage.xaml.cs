@@ -33,14 +33,19 @@ namespace OfficeProducts.Pages
             cbPickPoint.DisplayMemberPath = "PickPointName";
             cbPickPoint.SelectedValuePath = "PickPointID";
             CalculationSum();
+            if(order.User != null)
+            {
+                tbUser.Text = order.User.UserSurname + " " + order.User.UserName[0] + ". " + order.User.UserPatronymic[0]+".";
+            }
         }
 
+        double sum = 0;
+        double sumDiscount;
         /// <summary>
         /// Подсчет итоговой суммы и итоговой скидки
         /// </summary>
         void CalculationSum()
         {
-            double sum = 0;
             double sumWithoutDuscount = 0;
             foreach (OrderProduct product in orderProduct)
             {
@@ -56,8 +61,10 @@ namespace OfficeProducts.Pages
             {
                 disc = 0;
             }
-            tbSum.Text = Math.Round(sum, 2).ToString();
-            tbSumDiscount.Text = Math.Round(disc, 2).ToString() + "%";
+            sum = Math.Round(sum, 2);
+            sumDiscount = Math.Round(disc, 2);
+            tbSum.Text = sum.ToString();
+            tbSumDiscount.Text = sumDiscount.ToString() + "%";
         }
 
         private void tbCount_TextChanged(object sender, TextChangedEventArgs e)
@@ -120,7 +127,8 @@ namespace OfficeProducts.Pages
                 {
                     Classes.DataBaseClass.connect.OrderProduct.Add(product);
                 }
-                Classes.DataBaseClass.connect.SaveChanges();
+                //Classes.DataBaseClass.connect.SaveChanges();
+                Classes.FrameClass.frmOrder.Navigate(new TicketPage(order, orderProduct, sum, sumDiscount));
             }
             else
             {

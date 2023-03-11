@@ -58,8 +58,9 @@
             </StackPanel>
         </StackPanel>
         <Button Name="btnCheckout" Grid.Row="2" Style="{StaticResource ButtonTemplate}" Width="200" Height="40" HorizontalAlignment="Right" Content="Оформить заказ" Click="btnCheckout_Click" Cursor="Hand"/>
-        <GroupBox Width="300" Header="Пункт выдачи" Style="{StaticResource GroupBoxStyle}">
+        <GroupBox HorizontalAlignment="Left" Width="300" Header="Пункт выдачи" Style="{StaticResource GroupBoxStyle}">
             <ComboBox Name="cbPickPoint" Margin="5"/>
         </GroupBox>
+        <TextBlock Name="tbUser" HorizontalAlignment="Right" Grid.Row="0" VerticalAlignment="Center" Style="{StaticResource TextBlockBase}"/>
     </Grid>
 </Page>
