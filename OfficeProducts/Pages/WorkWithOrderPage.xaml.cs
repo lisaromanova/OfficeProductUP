@@ -84,5 +84,25 @@ namespace OfficeProducts.Pages
         {
             Filter();
         }
+
+        private void btnAlterDate_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            int id = Convert.ToInt32(btn.Uid);
+            Order order = Classes.DataBaseClass.connect.Order.FirstOrDefault(x => x.OrderID == id);
+            AlterDateWindow alterDate = new AlterDateWindow(order);
+            alterDate.ShowDialog();
+            Classes.FrameClass.frmMain.Navigate(new WorkWithOrderPage(name));
+        }
+
+        private void btnAlterStatus_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            int id = Convert.ToInt32(btn.Uid);
+            Order order = Classes.DataBaseClass.connect.Order.FirstOrDefault(x => x.OrderID == id);
+            AlterStatusWindow alterStatus = new AlterStatusWindow(order);
+            alterStatus.ShowDialog();
+            Classes.FrameClass.frmMain.Navigate(new WorkWithOrderPage(name));
+        }
     }
 }

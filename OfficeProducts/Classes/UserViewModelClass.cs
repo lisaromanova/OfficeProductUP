@@ -13,6 +13,9 @@ namespace OfficeProducts.Classes
         public event PropertyChangedEventHandler PropertyChanged;
 
         User user;
+        public static bool Admin = false;
+        public static bool Manager = false;
+
         public string Name
         {
             get
@@ -34,9 +37,24 @@ namespace OfficeProducts.Classes
             set
             {
                 user = value;
+                Admin = false;
+                Manager = false;
+                if (user!= null)
+                {
+                    switch (user.Logined.UserRoleID)
+                    {
+                        case 2:
+                            Admin = true;
+                            break;
+                        case 3:
+                            Manager = true;
+                            break;
+                    }
+                }
                 PropertyChanged(this, new PropertyChangedEventArgs("Name"));
             }
         }
+
 
         Visibility btnVisible = Visibility.Hidden;
         public Visibility ButtonVisible

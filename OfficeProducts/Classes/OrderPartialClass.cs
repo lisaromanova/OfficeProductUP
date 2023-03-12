@@ -1,10 +1,12 @@
-﻿using System;
+﻿using OfficeProducts.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace OfficeProducts
 {
@@ -69,6 +71,8 @@ namespace OfficeProducts
             }
         }
 
+
+
         public double SumDiscount
         {
             get
@@ -89,6 +93,42 @@ namespace OfficeProducts
                     disc = 0;
                 }
                 return Math.Round(disc, 2);
+            }
+        }
+
+        public SolidColorBrush OrderColor
+        {
+            get
+            {
+                int k = 0;
+                int zero = 0;
+                List<OrderProduct> orderProduct = Classes.DataBaseClass.connect.OrderProduct.Where(x => x.OrderID == OrderID).ToList();
+                foreach (OrderProduct product in orderProduct)
+                {
+                    if (product.Product.ProductQuantityInStock == 0 || product.Product.ProductQuantityInStock <= 3)
+                    {
+                        k++;
+                    }
+                    if (product.Product.ProductQuantityInStock == 0)
+                    {
+                        zero++;
+                    }
+                }
+                if (k == 0)
+                {
+                    return (SolidColorBrush)new BrushConverter().ConvertFrom("#20b2aa");
+                }
+                else
+                {
+                    if(zero != 0)
+                    {
+                        return (SolidColorBrush)new BrushConverter().ConvertFrom("#20b2aa");
+                    }
+                    else
+                    {
+                        return Brushes.White;
+                    }
+                }
             }
         }
     }

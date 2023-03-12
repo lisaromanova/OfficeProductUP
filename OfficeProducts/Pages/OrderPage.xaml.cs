@@ -106,7 +106,7 @@ namespace OfficeProducts.Pages
                 int k = 0;
                 foreach (OrderProduct product in orderProduct)
                 {
-                    if (product.Product.ProductQuantityInStock == null || product.Product.ProductQuantityInStock <= 3)
+                    if (product.Product.ProductQuantityInStock == 0 || product.Product.ProductQuantityInStock <= 3)
                     {
                         k++;
                     }

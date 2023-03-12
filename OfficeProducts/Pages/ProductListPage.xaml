@@ -77,14 +77,17 @@
                                     <Run Text="{Binding Cost, Mode=OneWay}" TextDecorations="{Binding OldCost}"/>
                                     <Run Text="{Binding NewCost, Mode=OneWay}"/>
                                 </TextBlock>
+                                <Button Width="150" Visibility="{Binding ButtonAlter}" Margin="0,10,0,0" Name="btnAlterProduct" Style="{StaticResource ButtonTemplate}" Content="Редактировать"/>
+                                <Button Width="150" Visibility="{Binding ButtonDelete}" Uid="{Binding ProductArticleNumber}" Margin="0,10,0,0" Name="btnDeleteProduct" Click="btnDeleteProduct_Click" Style="{StaticResource ButtonTemplate}" Content="Удалить"/>
                             </StackPanel>
-                            <TextBlock VerticalAlignment="Center" Style="{StaticResource TextBlockBase}" HorizontalAlignment="Center" Grid.Column="2" Text="{Binding ProductDiscountAmount, StringFormat={}{0}%}"/>
+                            <TextBlock HorizontalAlignment="Center" Grid.Column="2" VerticalAlignment="Center" Style="{StaticResource TextBlockBase}" Text="{Binding ProductDiscountAmount, StringFormat={}{0}%, TargetNullValue=0%}"/>
                         </Grid>
                     </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
         <Button Name="btnViewOrder" Visibility="Hidden" Grid.Row="2" Width="200" HorizontalAlignment="Right" Height="40" Style="{StaticResource ButtonTemplate}" Click="btnViewOrder_Click" Content="Просмотр заказа" Cursor="Hand"/>
-        <Button Name="btnOrders" Grid.Row="2" Width="200" HorizontalAlignment="Left" Height="40" Style="{StaticResource ButtonTemplate}" Click="btnOrders_Click" Content="Просмотр заказов" Cursor="Hand"/>
+        <Button Name="btnAddProduct" Visibility="Collapsed" Grid.Row="2" Width="200" HorizontalAlignment="Center" Height="40" Style="{StaticResource ButtonTemplate}" Content="Добавить продукт" Cursor="Hand"/>
+        <Button Name="btnOrders" Visibility="Collapsed" Grid.Row="2" Width="200" HorizontalAlignment="Left" Height="40" Style="{StaticResource ButtonTemplate}" Click="btnOrders_Click" Content="Просмотр заказов" Cursor="Hand"/>
     </Grid>
 </Page>

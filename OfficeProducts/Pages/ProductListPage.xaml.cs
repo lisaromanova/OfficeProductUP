@@ -23,6 +23,7 @@ namespace OfficeProducts.Pages
         int countList;
         Order order;
         Classes.UserViewModelClass name;
+
         public ProductListPage(Classes.UserViewModelClass name)
         {
             InitializeComponent();
@@ -39,6 +40,19 @@ namespace OfficeProducts.Pages
                 order.User = name.GetUser;
             }
             this.name = name;
+            if (name.GetUser != null)
+            {
+                switch (name.GetUser.Logined.UserRoleID)
+                {
+                    case 3:
+                        btnOrders.Visibility = Visibility.Visible;
+                        break;
+                    case 2:
+                        btnOrders.Visibility = Visibility.Visible;
+                        btnAddProduct.Visibility = Visibility.Visible;
+                        break;
+                }
+            }
         }
 
         /// <summary>
@@ -145,6 +159,36 @@ namespace OfficeProducts.Pages
         private void btnOrders_Click(object sender, RoutedEventArgs e)
         {
             Classes.FrameClass.frmMain.Navigate(new WorkWithOrderPage(name));
+        }
+
+        private void btnDeleteProduct_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            string id = btn.Uid.ToString();
+            List<OrderProduct> list = Classes.DataBaseClass.connect.OrderProduct.Where(x => x.ProductArticleNumber == id).ToList();
+            if(list.Count == 0)
+            {
+                Product product = Classes.DataBaseClass.connect.Product.FirstOrDefault(x => x.ProductArticleNumber == id);
+                MessageBoxResult result =  MessageBox.Show($"Вы точно хотите удалить {product.ProductName}?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if(result == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        Classes.DataBaseClass.connect.Product.Remove(product);
+                        Classes.DataBaseClass.connect.SaveChanges();
+                        MessageBox.Show("Продукт удален!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                        Classes.FrameClass.frmMain.Navigate(new ProductListPage(name));
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Ошибка", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Нельзя удалить продукт, так как он используется в заказах!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

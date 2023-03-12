@@ -52,7 +52,7 @@
         <ListView HorizontalContentAlignment="Stretch" Name="lstOrder" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Border BorderBrush="Black" BorderThickness="1">
+                    <Border BorderBrush="Black" BorderThickness="1" Background="{Binding OrderColor}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
@@ -95,6 +95,8 @@
                 <Run Text="Клиент: " FontWeight="Bold"/>
                 <Run Text="{Binding UserName, Mode=OneWay}"/>
                                 </TextBlock>
+                                <Button Margin="0,10,0,10" Uid="{Binding OrderID}" Name="btnAlterDate" Click="btnAlterDate_Click" Style="{StaticResource ButtonTemplate}" Width="250" Content="Изменить дату доставки"/>
+                                <Button Uid="{Binding OrderID}" Name="btnAlterStatus" Click="btnAlterStatus_Click" Style="{StaticResource ButtonTemplate}" Width="250" Content="Изменить статус заказа"/>
                             </StackPanel>
                         </Grid>
                     </Border>

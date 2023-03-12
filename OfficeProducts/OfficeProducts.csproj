@@ -71,6 +71,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AlterDateWindow.xaml.cs">
+      <DependentUpon>AlterDateWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AlterStatusWindow.xaml.cs">
+      <DependentUpon>AlterStatusWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CategoryProduct.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
@@ -143,6 +149,14 @@
     <Compile Include="ViewOrderWindow.xaml.cs">
       <DependentUpon>ViewOrderWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="AlterDateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AlterStatusWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OfficeProducts.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -90,6 +91,36 @@ namespace OfficeProducts
                 else
                 {
                     return null;
+                }
+            }
+        }
+
+        public Visibility ButtonAlter 
+        {
+            get
+            {
+                if (UserViewModelClass.Admin)
+                {
+                    return Visibility.Visible;
+                }
+                else
+                {
+                    return Visibility.Collapsed;
+                }
+            }
+        }
+
+        public Visibility ButtonDelete
+        {
+            get
+            {
+                if (UserViewModelClass.Manager || UserViewModelClass.Admin)
+                {
+                    return Visibility.Visible;
+                }
+                else
+                {
+                    return Visibility.Collapsed;
                 }
             }
         }

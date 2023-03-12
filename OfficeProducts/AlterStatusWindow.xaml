@@ -1,0 +1,17 @@
+﻿<Window x:Class="OfficeProducts.AlterStatusWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OfficeProducts"
+        mc:Ignorable="d"
+        Title="Изменение статуса" Icon="\Resources\icon.ico" Height="200" Width="400" MinHeight="200" MinWidth="400">
+    <Grid>
+        <StackPanel VerticalAlignment="Center">
+            <GroupBox  Width="250" Height="70" Header="Статус" Style="{StaticResource GroupBoxStyle}">
+                <ComboBox Margin="5" Name="cbStatus"/>
+            </GroupBox>
+            <Button Click="btnUpdate_Click" Margin="0,10,0,0" Name="btnUpdate" Style="{StaticResource ButtonTemplate}" Width="200" Content="Сохранить"/>
+        </StackPanel>
+    </Grid>
+</Window>

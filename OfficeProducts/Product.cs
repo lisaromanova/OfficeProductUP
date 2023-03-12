@@ -31,7 +31,7 @@ namespace OfficeProducts
         public decimal ProductCost { get; set; }
         public Nullable<double> ProductDiscountMax { get; set; }
         public Nullable<double> ProductDiscountAmount { get; set; }
-        public Nullable<int> ProductQuantityInStock { get; set; }
+        public int ProductQuantityInStock { get; set; }
         public string ProductStatus { get; set; }
     
         public virtual CategoryProduct CategoryProduct { get; set; }

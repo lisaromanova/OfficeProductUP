@@ -87,7 +87,7 @@
           <Property Name="ProductCost" Type="decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="ProductDiscountMax" Type="float" />
           <Property Name="ProductDiscountAmount" Type="float" />
-          <Property Name="ProductQuantityInStock" Type="int" />
+          <Property Name="ProductQuantityInStock" Type="int" Nullable="false" />
           <Property Name="ProductStatus" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Role">
@@ -520,7 +520,7 @@
           <Property Name="ProductCost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="ProductDiscountMax" Type="Double" />
           <Property Name="ProductDiscountAmount" Type="Double" />
-          <Property Name="ProductQuantityInStock" Type="Int32" />
+          <Property Name="ProductQuantityInStock" Type="Int32" Nullable="false" />
           <Property Name="ProductStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CategoryProduct" Relationship="practic19Model.FK__Product__Product__5070F446" FromRole="Product" ToRole="CategoryProduct" />
           <NavigationProperty Name="ManufacturerProduct" Relationship="practic19Model.FK__Product__Product__5165187F" FromRole="Product" ToRole="ManufacturerProduct" />
