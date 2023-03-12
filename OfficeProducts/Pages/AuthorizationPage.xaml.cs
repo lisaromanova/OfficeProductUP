@@ -22,8 +22,8 @@ namespace OfficeProducts.Pages
     public partial class AuthorizationPage : Page
     {
         DispatcherTimer timer;
-        Classes.NameClass name;
-        public AuthorizationPage(Classes.NameClass name)
+        Classes.UserViewModelClass name;
+        public AuthorizationPage(Classes.UserViewModelClass name)
         {
             InitializeComponent();
             timer = new DispatcherTimer();
@@ -114,7 +114,6 @@ namespace OfficeProducts.Pages
                     {
                         if (user != null)
                         {
-                            name.Name = user.User.UserSurname + " "+user.User.UserName + " " + user.User.UserPatronymic;
                             name.ButtonVisible = Visibility.Visible;
                             name.GetUser = user.User;
                             MessageBox.Show("Успешная авторизация!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -134,7 +133,6 @@ namespace OfficeProducts.Pages
                     {
                         if (user != null && tbCaptcha.Text == str)
                         {
-                            name.Name = user.User.UserSurname + " " + user.User.UserName + " " + user.User.UserPatronymic;
                             name.GetUser = user.User;
                             name.ButtonVisible = Visibility.Visible;
                             MessageBox.Show("Успешная авторизация!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -172,7 +170,6 @@ namespace OfficeProducts.Pages
 
         private void btnEnterGuest_Click(object sender, RoutedEventArgs e)
         {
-            name.Name = "Гость";
             name.ButtonVisible = Visibility.Visible;
             Classes.FrameClass.frmMain.Navigate(new ProductListPage(name));
         }

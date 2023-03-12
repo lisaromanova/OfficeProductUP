@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace OfficeProducts
@@ -44,11 +45,26 @@ namespace OfficeProducts
             {
                 if (User != null)
                 {
-                    return User.UserSurname + " " + User.UserName[0] + ". " + User.UserPatronymic[0] + ".";
+                    return User.UserFio;
                 }
                 else
                 {
                     return string.Empty;
+                }
+            }
+        }
+
+        public Visibility VisibilityUser
+        {
+            get
+            {
+                if (User != null)
+                {
+                    return Visibility.Visible;
+                }
+                else
+                {
+                    return Visibility.Collapsed;
                 }
             }
         }

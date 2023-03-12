@@ -22,8 +22,8 @@ namespace OfficeProducts.Pages
     {
         int countList;
         Order order;
-        Classes.NameClass name;
-        public ProductListPage(Classes.NameClass name)
+        Classes.UserViewModelClass name;
+        public ProductListPage(Classes.UserViewModelClass name)
         {
             InitializeComponent();
             List<Product> products = Classes.DataBaseClass.connect.Product.ToList();
@@ -41,17 +41,20 @@ namespace OfficeProducts.Pages
             this.name = name;
         }
 
+        /// <summary>
+        /// Фильтрация и сортировка данных
+        /// </summary>
         void Filter()
         {
             List<Product> list = Classes.DataBaseClass.connect.Product.ToList();
-            if(cbSort.SelectedIndex != -1)
+            if(cbSort.SelectedIndex != -1 && cbSort.SelectedIndex!=0)
             {
                 switch(cbSort.SelectedIndex)
                 {
-                    case 0:
+                    case 1:
                         list = list.OrderBy(x => x.CostSort).ToList();
                         break;
-                    case 1:
+                    case 2:
                         list = list.OrderByDescending(x => x.CostSort).ToList();
                         break;
                 }

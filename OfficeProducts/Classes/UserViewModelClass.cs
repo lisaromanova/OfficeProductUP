@@ -8,19 +8,23 @@ using System.Windows;
 
 namespace OfficeProducts.Classes
 {
-    public class NameClass : INotifyPropertyChanged
+    public class UserViewModelClass : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
         User user;
-        string name = "";
         public string Name
         {
-            get => name;
-            set
+            get
             {
-                name = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("Name"));
+                if (user != null)
+                {
+                    return user.UserFio;
+                }
+                else
+                {
+                    return string.Empty;
+                }
             }
         }
 
@@ -30,6 +34,7 @@ namespace OfficeProducts.Classes
             set
             {
                 user = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("Name"));
             }
         }
 

@@ -45,7 +45,7 @@ namespace OfficeProducts.Pages
             if (order.User != null)
             {
                 user.Visibility = Visibility.Visible;
-                tbUser.Text = order.User.UserSurname + " " + order.User.UserName[0] + ". " + order.User.UserPatronymic[0] + ".";
+                tbUser.Text = order.User.UserFio;
             }
         }
 

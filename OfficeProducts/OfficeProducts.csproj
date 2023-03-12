@@ -79,7 +79,8 @@
     </Compile>
     <Compile Include="Classes\DataBaseClass.cs" />
     <Compile Include="Classes\FrameClass.cs" />
-    <Compile Include="Classes\NameClass.cs" />
+    <Compile Include="Classes\UserPartialClass.cs" />
+    <Compile Include="Classes\UserViewModelClass.cs" />
     <Compile Include="Classes\OrderPartialClass.cs" />
     <Compile Include="Classes\PickPointPartialClass.cs" />
     <Compile Include="Classes\ProductPartialClass.cs" />

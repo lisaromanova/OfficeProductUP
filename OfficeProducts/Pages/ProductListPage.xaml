@@ -20,6 +20,9 @@
                 <GroupBox Width="250" Header="Сортировка" Style="{StaticResource GroupBoxStyle}">
                     <ComboBox Margin="5" Name="cbSort" SelectionChanged="cbSort_SelectionChanged">
                         <ComboBoxItem>
+                            По умолчанию
+                        </ComboBoxItem>
+                        <ComboBoxItem>
                             По возрастанию стоимости
                         </ComboBoxItem>
                         <ComboBoxItem>
@@ -48,7 +51,7 @@
                 </GroupBox>
             </StackPanel>
         </StackPanel>
-        <TextBlock Name="tbEmpty" Text="Записи не найдены" FontSize="40" FontFamily="Comic Sans MS" VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="Collapsed" Margin="0,169,0,0" Grid.Row="1"/>
+        <TextBlock Name="tbEmpty" Text="Записи не найдены" FontSize="40" FontFamily="Comic Sans MS" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Collapsed" Grid.Row="1"/>
         <ListView HorizontalContentAlignment="Stretch" Name="lstProduct" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate>

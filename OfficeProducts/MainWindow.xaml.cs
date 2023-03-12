@@ -21,13 +21,13 @@ namespace OfficeProducts
     /// </summary>
     public partial class MainWindow : Window
     {
-        Classes.NameClass name;
+        Classes.UserViewModelClass name;
         public MainWindow()
         {
             InitializeComponent();
             Classes.DataBaseClass.connect = new DataBaseEntities();
             Classes.FrameClass.frmMain = frmMain;
-            name = new Classes.NameClass();
+            name = new Classes.UserViewModelClass();
             DataContext = name;
             Classes.FrameClass.frmMain.Navigate(new Pages.AuthorizationPage(name));
         }
@@ -35,7 +35,7 @@ namespace OfficeProducts
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             Classes.FrameClass.frmMain.Navigate(new Pages.AuthorizationPage(name));
-            name.Name = "";
+            name.GetUser = null;
             name.ButtonVisible = Visibility.Hidden;
         }
     }
