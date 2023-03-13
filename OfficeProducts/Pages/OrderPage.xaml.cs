@@ -95,7 +95,6 @@ namespace OfficeProducts.Pages
             orderProduct.Remove(product);
             lstProduct.ItemsSource = null;
             lstProduct.ItemsSource = orderProduct;
-
         }
 
         private void btnCheckout_Click(object sender, RoutedEventArgs e)
@@ -128,6 +127,7 @@ namespace OfficeProducts.Pages
                     Classes.DataBaseClass.connect.OrderProduct.Add(product);
                 }
                 //Classes.DataBaseClass.connect.SaveChanges();
+                MessageBox.Show("Заказ успешно создан", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
                 Classes.FrameClass.frmOrder.Navigate(new TicketPage(order, orderProduct, sum, sumDiscount));
             }
             else

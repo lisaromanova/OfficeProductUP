@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OfficeProducts.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -153,7 +154,18 @@ namespace OfficeProducts.Pages
         {
             ViewOrderWindow view = new ViewOrderWindow(order, listOrder);
             view.ShowDialog();
-            Classes.FrameClass.frmMain.Navigate(new ProductListPage(name));
+            if (UserViewModelClass.OrderFinal)
+            {
+                UserViewModelClass.OrderFinal = false;
+                Classes.FrameClass.frmMain.Navigate(new ProductListPage(name));
+            }
+            else
+            {
+                if(listOrder.Count == 0)
+                {
+                    btnViewOrder.Visibility = Visibility.Collapsed;
+                }
+            }
         }
 
         private void btnOrders_Click(object sender, RoutedEventArgs e)

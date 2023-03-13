@@ -15,6 +15,7 @@ namespace OfficeProducts.Classes
         User user;
         public static bool Admin = false;
         public static bool Manager = false;
+        public static bool OrderFinal = false;
 
         public string Name
         {
