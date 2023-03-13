@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,6 +9,15 @@ namespace SF2022User_NN_Lib
 {
     public class Calculations
     {
+        /// <summary>
+        /// Расчет свободных временных интервалов в графике сотрудника
+        /// </summary>
+        /// <param name="startTimes">Начало занятого времени</param>
+        /// <param name="durations">Длительность занятого времени</param>
+        /// <param name="beginWorkingTime">Начало рабочего дня сотрудника</param>
+        /// <param name="endWorkingTime">Конец рабочего дня сотрудника</param>
+        /// <param name="consultationTime">Минимальное необходимое время для работы менеджера</param>
+        /// <returns>Список свободных временных интервалов</returns>
         public string[] AvailablePeriods(TimeSpan[] startTimes, int[] durations, TimeSpan beginWorkingTime, TimeSpan endWorkingTime, int consultationTime)
         {
             TimeSpan time = beginWorkingTime;
@@ -30,10 +40,10 @@ namespace SF2022User_NN_Lib
                 {
                     Array.Resize(ref str, str.Length + 1);
                     TimeSpan t2 = new TimeSpan(time.Hours, time.Minutes, 0);
-                    str[indexStr] += t2.ToString() + "-";
+                    str[indexStr] += t2.ToString().Substring(0, t2.ToString().Length - 3) + "-";
                     time += new TimeSpan(0, consultationTime, 0);
                     t2 = new TimeSpan(time.Hours, time.Minutes, 0);
-                    str[indexStr] += t2.ToString();
+                    str[indexStr] += t2.ToString().Substring(0, t2.ToString().Length - 3);
                     vych -= new TimeSpan(0, consultationTime, 0);
                     indexStr++;
                 }

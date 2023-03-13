@@ -90,6 +90,7 @@ namespace OfficeProducts.Pages
         /// <summary>
         /// Удаление продукта из заказа
         /// </summary>
+        /// <param name="product">Объект продукта</param>
         void DeleteProductFromOrder(OrderProduct product)
         {
             orderProduct.Remove(product);
@@ -126,7 +127,7 @@ namespace OfficeProducts.Pages
                 {
                     Classes.DataBaseClass.connect.OrderProduct.Add(product);
                 }
-                //Classes.DataBaseClass.connect.SaveChanges();
+                Classes.DataBaseClass.connect.SaveChanges();
                 MessageBox.Show("Заказ успешно создан", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
                 Classes.FrameClass.frmOrder.Navigate(new TicketPage(order, orderProduct, sum, sumDiscount));
             }

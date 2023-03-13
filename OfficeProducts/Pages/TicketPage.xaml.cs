@@ -48,7 +48,7 @@ namespace OfficeProducts.Pages
             string orderProduct = "";
             foreach(OrderProduct product in products)
             {
-                orderProduct += product.Product.ProductName + ", " + product.Quantity + product.Product.UnitOfMeasurement.UnitOfMeasurement1 + "\n";
+                orderProduct += product.Product.ProductName + " " +product.Product.ManufacturerProduct.ManufacturerName+", " + product.Quantity + product.Product.UnitOfMeasurement.UnitOfMeasurement1 + "\n";
             }
             tbOrder.Text = orderProduct;
             if (order.User != null)
@@ -61,10 +61,9 @@ namespace OfficeProducts.Pages
         private void btnPdf_Click(object sender, RoutedEventArgs e)
         {
             PdfDocument document = new PdfDocument();
-            document.Info.Title = "Created with PDFsharp";
             PdfPage page = document.AddPage();
             XGraphics gfx = XGraphics.FromPdfPage(page);
-            XFont font = new XFont("Comic Sans MS", 20, XFontStyle.Regular);
+            XFont font = new XFont("Comic Sans MS", 20, XFontStyle.Bold);
             XFont fontBase = new XFont("Comic Sans MS", 16, XFontStyle.Bold);
             XFont fontString = new XFont("Comic Sans MS", 16, XFontStyle.Regular);
             gfx.DrawString("Талон", font, XBrushes.Black,
@@ -123,7 +122,7 @@ namespace OfficeProducts.Pages
             foreach(OrderProduct product in products)
             {
                 height += 30;
-                gfx.DrawString($"{product.Product.ProductName}, {product.Quantity} {product.Product.UnitOfMeasurement.UnitOfMeasurement1}", fontString, XBrushes.Black,
+                gfx.DrawString($"{product.Product.ProductName} {product.Product.ManufacturerProduct.ManufacturerName}, {product.Quantity} {product.Product.UnitOfMeasurement.UnitOfMeasurement1}", fontString, XBrushes.Black,
         new XPoint(50, height));
             }
             string filename = $"\\Order_{order.OrderID}.pdf";

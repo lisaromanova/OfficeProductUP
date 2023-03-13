@@ -35,7 +35,7 @@ namespace OfficeProducts
                 string s = "";
                 foreach (OrderProduct product in list)
                 {
-                    s += product.Product.ProductName + ", " + product.Quantity + product.Product.UnitOfMeasurement.UnitOfMeasurement1 + "\n";
+                    s += product.Product.ProductName + " "+product.Product.ManufacturerProduct.ManufacturerName + ", " + product.Quantity + product.Product.UnitOfMeasurement.UnitOfMeasurement1 + "\n";
                 }
                 return s;
             }
