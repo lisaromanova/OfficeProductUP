@@ -18,8 +18,14 @@ namespace SF2022User_NN_Lib
         /// <param name="endWorkingTime">Конец рабочего дня сотрудника</param>
         /// <param name="consultationTime">Минимальное необходимое время для работы менеджера</param>
         /// <returns>Список свободных временных интервалов</returns>
-        public string[] AvailablePeriods(TimeSpan[] startTimes, int[] durations, TimeSpan beginWorkingTime, TimeSpan endWorkingTime, int consultationTime)
+        public static string[] AvailablePeriods(TimeSpan[] startTimes, int[] durations, TimeSpan beginWorkingTime, TimeSpan endWorkingTime, int consultationTime)
         {
+            if(startTimes.Length != durations.Length || startTimes.Length == 0
+                || durations.Length == 0 || beginWorkingTime == new TimeSpan()
+                || endWorkingTime == new TimeSpan() || consultationTime == 0)
+            {
+                throw new Exception("Ошибка");
+            }
             TimeSpan time = beginWorkingTime;
             string[] str = new string[0];
             int j = 0;
