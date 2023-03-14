@@ -131,19 +131,32 @@ namespace OfficeProducts.Pages
                     }
                     else
                     {
-                        if (user != null && tbCaptcha.Text == str)
+                        if (!string.IsNullOrEmpty(tbCaptcha.Text))
                         {
-                            name.GetUser = user.User;
-                            name.ButtonVisible = Visibility.Visible;
-                            MessageBox.Show("Успешная авторизация!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-                            Classes.FrameClass.frmMain.Navigate(new ProductListPage(name));
+                            if (user != null && tbCaptcha.Text == str)
+                            {
+                                name.GetUser = user.User;
+                                name.ButtonVisible = Visibility.Visible;
+                                MessageBox.Show("Успешная авторизация!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                                Classes.FrameClass.frmMain.Navigate(new ProductListPage(name));
+                            }
+                            else
+                            {
+                                MessageBox.Show("Неверные данные! Войти заново можно будет через 10 секунд", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                                tbLogin.Text = string.Empty;
+                                pswPassword.Password = string.Empty;
+                                tbCaptcha.Text = string.Empty;
+                                tbLogin.IsEnabled = false;
+                                pswPassword.IsEnabled = false;
+                                tbCaptcha.IsEnabled = false;
+                                timer.Start();
+                                btnEnter.Visibility = Visibility.Hidden;
+                                btnEnterGuest.Visibility = Visibility.Hidden;
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("Неверные данные! Войти заново можно будет через 10 секунд", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                            timer.Start();
-                            btnEnter.Visibility = Visibility.Hidden;
-                            btnEnterGuest.Visibility = Visibility.Hidden;
+                            MessageBox.Show("Введите Captcha!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     }
                 }
@@ -163,7 +176,9 @@ namespace OfficeProducts.Pages
             timer.Stop();
             canvasCaptcha.Children.Clear();
             Captcha();
-            tbCaptcha.Text = string.Empty;
+            tbLogin.IsEnabled = true;
+            pswPassword.IsEnabled = true;
+            tbCaptcha.IsEnabled = true;
             btnEnter.Visibility = Visibility.Visible;
             btnEnterGuest.Visibility = Visibility.Visible;
         }
