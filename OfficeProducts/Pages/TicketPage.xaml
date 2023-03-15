@@ -29,7 +29,7 @@
                 <Run Name="rDateOrder"/>
                 </TextBlock>
                 <TextBlock TextWrapping="Wrap" Margin="10" Style="{StaticResource TextBlockBase}">
-                <Run Text="Дата выдачи: " FontWeight="Bold"/>
+                <Run Text="Дата доставки: " FontWeight="Bold"/>
                 <Run Name="rDate"/>
                 </TextBlock>
                 <TextBlock TextWrapping="Wrap" Margin="10" Style="{StaticResource TextBlockBase}">

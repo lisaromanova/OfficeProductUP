@@ -108,7 +108,7 @@ namespace OfficeProducts.Pages
                 new XPoint(width, height));
             if (order.UserID != null)
             {
-                height += 15;
+                height += 30;
                 gfx.DrawString("Заказчик: ", fontBase, XBrushes.Black,
         new XPoint(50, height));
                 gfx.DrawString(order.User.UserFio.ToString(), fontBase, XBrushes.Black,
