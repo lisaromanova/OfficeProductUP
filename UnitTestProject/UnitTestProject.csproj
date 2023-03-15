@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="testing-template.docx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SF2022User{NN}Lib\SF2022User{NN}Lib.csproj">
