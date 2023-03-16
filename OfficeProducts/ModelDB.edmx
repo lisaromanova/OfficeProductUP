@@ -52,7 +52,7 @@
             <PropertyRef Name="OrderProductID" />
           </Key>
           <Property Name="OrderProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="OrderID" Type="int" />
           <Property Name="ProductArticleNumber" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Quantity" Type="int" Nullable="false" />
         </EntityType>
@@ -79,7 +79,7 @@
           <Property Name="ProductArticleNumber" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="ProductName" Type="nvarchar(max)" Nullable="false" />
           <Property Name="ProductUnit" Type="int" Nullable="false" />
-          <Property Name="ProductDescription" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ProductDescription" Type="nvarchar(max)" />
           <Property Name="ProductCategoryID" Type="int" Nullable="false" />
           <Property Name="ProductPhoto" Type="nvarchar(max)" />
           <Property Name="ProductManufacturerID" Type="int" Nullable="false" />
@@ -165,7 +165,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__OrderProd__Order__5535A963">
-          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
           <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Order">
@@ -480,7 +480,7 @@
             <PropertyRef Name="OrderProductID" />
           </Key>
           <Property Name="OrderProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="OrderID" Type="Int32" />
           <Property Name="ProductArticleNumber" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Order" Relationship="practic19Model.FK__OrderProd__Order__5535A963" FromRole="OrderProduct" ToRole="Order" />
@@ -512,7 +512,7 @@
           <Property Name="ProductArticleNumber" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ProductName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ProductUnit" Type="Int32" Nullable="false" />
-          <Property Name="ProductDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ProductCategoryID" Type="Int32" Nullable="false" />
           <Property Name="ProductPhoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ProductManufacturerID" Type="Int32" Nullable="false" />
@@ -658,7 +658,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__OrderProd__Order__5535A963">
-          <End Type="practic19Model.Order" Role="Order" Multiplicity="1" />
+          <End Type="practic19Model.Order" Role="Order" Multiplicity="0..1" />
           <End Type="practic19Model.OrderProduct" Role="OrderProduct" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Order">

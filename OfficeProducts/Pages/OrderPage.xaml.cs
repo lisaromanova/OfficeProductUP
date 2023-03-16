@@ -46,6 +46,7 @@ namespace OfficeProducts.Pages
         /// </summary>
         void CalculationSum()
         {
+            sum = 0;
             double sumWithoutDuscount = 0;
             foreach (OrderProduct product in orderProduct)
             {
@@ -102,34 +103,42 @@ namespace OfficeProducts.Pages
         {
             if (cbPickPoint.SelectedIndex != -1)
             {
-                order.OrderPickupPointID = (int)cbPickPoint.SelectedValue;
-                int k = 0;
-                foreach (OrderProduct product in orderProduct)
+                if (orderProduct.Count != 0)
                 {
-                    if (product.Product.ProductQuantityInStock == 0 || product.Product.ProductQuantityInStock <= 3)
+                    order.OrderPickupPointID = (int)cbPickPoint.SelectedValue;
+                    int k = 0;
+                    foreach (OrderProduct product in orderProduct)
                     {
-                        k++;
+                        if (product.Product.ProductQuantityInStock == 0 || product.Product.ProductQuantityInStock <= 3)
+                        {
+                            k++;
+                        }
                     }
-                }
-                if (k == 0)
-                {
-                    order.OrderDeliveryDate = DateTime.Now.AddDays(3);
+                    if (k == 0)
+                    {
+                        order.OrderDeliveryDate = DateTime.Now.AddDays(3);
+                    }
+                    else
+                    {
+                        order.OrderDeliveryDate = DateTime.Now.AddDays(6);
+                    }
+                    List<Order> list = Classes.DataBaseClass.connect.Order.ToList();
+                    order.NumberReceiving = list[list.Count - 1].NumberReceiving + 1;
+                    Classes.DataBaseClass.connect.Order.Add(order);
+
+                    foreach (OrderProduct product in orderProduct)
+                    {
+                        Classes.DataBaseClass.connect.OrderProduct.Add(product);
+                    }
+                    Classes.DataBaseClass.connect.SaveChanges();
+                    MessageBox.Show("Заказ успешно создан", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Classes.FrameClass.frmOrder.Navigate(new TicketPage(order, orderProduct, sum, sumDiscount));
+
                 }
                 else
                 {
-                    order.OrderDeliveryDate = DateTime.Now.AddDays(6);
+                    MessageBox.Show("Выберите продукт!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-                List<Order> list = Classes.DataBaseClass.connect.Order.ToList();
-                order.NumberReceiving = list[list.Count - 1].NumberReceiving + 1;
-                Classes.DataBaseClass.connect.Order.Add(order);
-
-                foreach (OrderProduct product in orderProduct)
-                {
-                    Classes.DataBaseClass.connect.OrderProduct.Add(product);
-                }
-                Classes.DataBaseClass.connect.SaveChanges();
-                MessageBox.Show("Заказ успешно создан", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-                Classes.FrameClass.frmOrder.Navigate(new TicketPage(order, orderProduct, sum, sumDiscount));
             }
             else
             {

@@ -15,7 +15,7 @@ namespace OfficeProducts
     public partial class OrderProduct
     {
         public int OrderProductID { get; set; }
-        public int OrderID { get; set; }
+        public Nullable<int> OrderID { get; set; }
         public string ProductArticleNumber { get; set; }
         public int Quantity { get; set; }
     

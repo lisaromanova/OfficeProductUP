@@ -5,20 +5,20 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="03ad9dfb1cf04f22be9bf2efd6f73a9e" Name="Diagram1">
-        <EntityTypeShape EntityType="practic19Model.CategoryProduct" Width="1.5" PointX="0.75" PointY="10.375" />
-        <EntityTypeShape EntityType="practic19Model.City" Width="1.5" PointX="1.5" PointY="31.75" />
-        <EntityTypeShape EntityType="practic19Model.Logined" Width="1.5" PointX="1.5" PointY="19.5" />
-        <EntityTypeShape EntityType="practic19Model.ManufacturerProduct" Width="1.5" PointX="0.75" PointY="5.625" />
+        <EntityTypeShape EntityType="practic19Model.CategoryProduct" Width="1.5" PointX="0.75" PointY="2.5" />
+        <EntityTypeShape EntityType="practic19Model.City" Width="1.5" PointX="1.5" PointY="22.5" />
+        <EntityTypeShape EntityType="practic19Model.Logined" Width="1.5" PointX="1.5" PointY="25.125" />
+        <EntityTypeShape EntityType="practic19Model.ManufacturerProduct" Width="1.5" PointX="0.75" PointY="8" />
         <EntityTypeShape EntityType="practic19Model.Order" Width="1.5" PointX="3" PointY="15.375" />
         <EntityTypeShape EntityType="practic19Model.OrderProduct" Width="1.5" PointX="5.25" PointY="2.25" />
-        <EntityTypeShape EntityType="practic19Model.OrderStatus" Width="1.5" PointX="0.75" PointY="13.125" />
-        <EntityTypeShape EntityType="practic19Model.PickPoint" Width="1.5" PointX="0.75" PointY="25.5" />
+        <EntityTypeShape EntityType="practic19Model.OrderStatus" Width="1.5" PointX="0.75" PointY="31" />
+        <EntityTypeShape EntityType="practic19Model.PickPoint" Width="1.5" PointX="0.75" PointY="13.125" />
         <EntityTypeShape EntityType="practic19Model.Product" Width="1.5" PointX="3" PointY="1" />
-        <EntityTypeShape EntityType="practic19Model.Role" Width="1.5" PointX="1.5" PointY="22.75" />
-        <EntityTypeShape EntityType="practic19Model.StreetPoint" Width="1.5" PointX="1.5" PointY="28.5" />
-        <EntityTypeShape EntityType="practic19Model.SupplierProduct" Width="1.5" PointX="0.75" PointY="2.5" />
-        <EntityTypeShape EntityType="practic19Model.UnitOfMeasurement" Width="1.5" PointX="0.75" PointY="8" />
-        <EntityTypeShape EntityType="practic19Model.User" Width="1.5" PointX="0.75" PointY="15.5" />
+        <EntityTypeShape EntityType="practic19Model.Role" Width="1.5" PointX="1.5" PointY="28.375" />
+        <EntityTypeShape EntityType="practic19Model.StreetPoint" Width="1.5" PointX="1.5" PointY="19.25" />
+        <EntityTypeShape EntityType="practic19Model.SupplierProduct" Width="1.5" PointX="0.75" PointY="10.375" />
+        <EntityTypeShape EntityType="practic19Model.UnitOfMeasurement" Width="1.5" PointX="0.75" PointY="5.625" />
+        <EntityTypeShape EntityType="practic19Model.User" Width="1.5" PointX="0.75" PointY="16.125" />
         <AssociationConnector Association="practic19Model.FK__Product__Product__5070F446" />
         <AssociationConnector Association="practic19Model.FK_StreetPoint_City" />
         <AssociationConnector Association="practic19Model.FK__Logined__UserRol__398D8EEE" />
