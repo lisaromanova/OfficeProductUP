@@ -56,7 +56,7 @@ namespace OfficeProducts.Pages
             double disc;
             if (sumWithoutDuscount != 0)
             {
-                disc = 10 - (sum / sumWithoutDuscount);
+                disc = 100 - (sum * 100 / sumWithoutDuscount);
             }
             else
             {
